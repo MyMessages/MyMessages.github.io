@@ -71,6 +71,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-3-vue打包背景图不显示" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/" class="article-date">
+  <time class="dt-published" datetime="2021-03-02T14:42:24.000Z" itemprop="datePublished">2021-03-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">3.vue打包背景图不显示</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Vue项目打包报错Failed-to-load-resource-net-ERR-FILE-NOT-FOUND"><a href="#Vue项目打包报错Failed-to-load-resource-net-ERR-FILE-NOT-FOUND" class="headerlink" title="Vue项目打包报错Failed to load resource: net::ERR_FILE_NOT_FOUND"></a>Vue项目打包报错Failed to load resource: net::ERR_FILE_NOT_FOUND</h1><h3 id="1-webpack-prod-conf-js-中output添加参数publicPath-’-‘"><a href="#1-webpack-prod-conf-js-中output添加参数publicPath-’-‘" class="headerlink" title="1.webpack.prod.conf.js 中output添加参数publicPath:’./‘"></a>1.webpack.prod.conf.js 中output添加参数publicPath:’./‘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.webpack.prod.conf.js 中output添加参数publicPath:&#39;.&#x2F;&#39;</span><br></pre></td></tr></table></figure>
+<h3 id="2-修改webpack-base-conf-js中："><a href="#2-修改webpack-base-conf-js中：" class="headerlink" title="2.修改webpack.base.conf.js中："></a>2.修改webpack.base.conf.js中：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">publicPath: process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39;</span><br><span class="line"></span><br><span class="line">? &#39;.&#x2F;&#39; +config.build.assetsPublicPath</span><br><span class="line"></span><br><span class="line">: &#39;.&#x2F;&#39; + config.dev.assetsPublicPath</span><br></pre></td></tr></table></figure>
+<h3 id="3-如果还有问题："><a href="#3-如果还有问题：" class="headerlink" title="3.如果还有问题："></a>3.如果还有问题：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">找到config文件里面的index.js</span><br><span class="line"></span><br><span class="line">修改build里面的assetsPublicPath；</span><br><span class="line"></span><br><span class="line">assetsPublicPath: &#39;&#x2F;&#39;,</span><br></pre></td></tr></table></figure>
+<h2 id="4-对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案"><a href="#4-对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案" class="headerlink" title="4.对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案"></a>4.对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案</h2><p><strong>在build 下的 utils.js中找到：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (options.extract) &#123;</span><br><span class="line">      return ExtractTextPlugin.extract(&#123;</span><br><span class="line">        use: loaders,</span><br><span class="line">        fallback: &#39;vue-style-loader&#39;,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return [&#39;vue-style-loader&#39;].concat(loaders)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>并添加 publicPath: ‘../../‘</p>
+<p>添加后的效果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (options.extract) &#123;</span><br><span class="line">      return ExtractTextPlugin.extract(&#123;</span><br><span class="line">        use: loaders,</span><br><span class="line">        fallback: &#39;vue-style-loader&#39;,</span><br><span class="line">        publicPath: &#39;..&#x2F;..&#x2F;&#39;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return [&#39;vue-style-loader&#39;].concat(loaders)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/" data-id="ckls5567m0002r0u34blfd14p" data-title="3.vue打包背景图不显示" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-2-vue中productionSourceMap属性详解" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" class="article-date">
@@ -104,7 +150,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" data-id="ckls3hyrz0001mwu357wc2dg5" data-title="2.vue中productionSourceMap属性详解" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" data-id="ckls5567h0001r0u3cm4mcx4b" data-title="2.vue中productionSourceMap属性详解" class="article-share-link">Share</a>
       
       
       
@@ -199,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" data-id="ckls3hyrr0000mwu376vkd7ac" data-title="1.hexo+github搭建个人博客教程（@刘桓）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" data-id="ckls5567d0000r0u31hh6b5zz" data-title="1.hexo+github搭建个人博客教程（@刘桓）" class="article-share-link">Share</a>
       
       
       
@@ -240,6 +286,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">3.vue打包背景图不显示</a>
+          </li>
         
           <li>
             <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">2.vue中productionSourceMap属性详解</a>
