@@ -71,6 +71,74 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-vue三种传值的方式" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T07:26:57.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/">6.vue三种传值的方式</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>vue中最传统的三种传值方式</p>
+<h2 id="1-父向子传值"><a href="#1-父向子传值" class="headerlink" title="1.父向子传值"></a>1.父向子传值</h2><h3 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h3><p>在子组件的调用标签上, 添加一个自定义属性, 然后通过v-bind指定一个父组件的data数据作为自定义属性的值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 第一步: 在子组件上添加自定义属性 --&gt; </span><br><span class="line">&lt;Form ref&#x3D;&quot;form&quot; :message&#x3D;&quot;user&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h3><p>在子组件的对象中, 添加一个props属性, 来接收父组件传递过来的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">		&#x2F;&#x2F; 接收外界传递的数据 &#x2F;&#x2F;props:[&#39;message&#39;] </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可对传过的值进行一个 验证，验证数据的合法性</p>
+<ul>
+<li>type属性: 进行类型校验 <pre><code> 可选值: Number , String , Boolean , Array , Object
+</code></pre>
+</li>
+<li>required: 属性是否必须 <pre><code> 可选值: true , false 
+</code></pre>
+</li>
+<li>type属性: 进行类型校验</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 对prop数据进行类型校验 </span><br><span class="line">export default &#123; </span><br><span class="line">props:&#123; </span><br><span class="line">&#x2F;&#x2F; message:  子组件调用标签上那个自定义属性名  </span><br><span class="line">message:&#123; </span><br><span class="line">		&#x2F;&#x2F; typ可选值: Number String Boolean Array Object type: Object, </span><br><span class="line">		&#x2F;&#x2F; prop属性是否必须 required:true &#125;,</span><br><span class="line">		count:&#123; type:Number &#125;</span><br><span class="line">	 &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 输出外界传递过来的数据 --&gt; </span><br><span class="line">&lt;h1&gt;&#123;&#123;message&#125;&#125;&lt;&#x2F;h1&gt; </span><br><span class="line">&lt;h1&gt;&#123;&#123;count&#125;&#125;&lt;&#x2F;h1&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-子向父传值"><a href="#2-子向父传值" class="headerlink" title="2.子向父传值"></a>2.子向父传值</h2><p>通过自定义事件的方式</p>
+<h3 id="第一步-1"><a href="#第一步-1" class="headerlink" title="第一步"></a>第一步</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">在子组件的调用标签之上, 通过v-on绑定一个自定义事件, 在父组件的methods中定义一个方法作</span><br><span class="line">为事件处理函数, 这个函数需要一个参数</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt; </span><br><span class="line">&lt;div class&#x3D;&quot;well&quot;&gt; </span><br><span class="line">&lt;h1&gt;wrap父组件&lt;&#x2F;h1</span><br><span class="line">&gt; &lt;hr&gt; </span><br><span class="line">&gt; &lt;!-- &lt;h3&gt;&#123;&#123;dataFromBox&#125;&#125;&lt;&#x2F;h3&gt; --&gt; </span><br><span class="line">&gt; &lt;ul class&#x3D;&quot;list-group&quot;&gt;</span><br><span class="line">&gt;  &lt;li class&#x3D;&quot;list-group-item&quot; v-for&#x3D;&quot;item in dataFromBox&quot; :key&#x3D;&quot;item.id&quot;&gt;&#123;&#123;item.name&#125;&#125;&lt;&#x2F;li&gt; </span><br><span class="line">&gt;  &lt;&#x2F;ul&gt;</span><br><span class="line">&gt;   &lt;hr&gt; </span><br><span class="line">&gt;   &lt;!-- 第一步: 绑定自定义事件 --&gt; </span><br><span class="line">&gt;   &lt;Box @getData&#x3D;&quot;getData&quot;&#x2F;&gt;</span><br><span class="line">&gt;    &lt;&#x2F;div&gt; &lt;&#x2F;template&gt; </span><br><span class="line">&gt;    &lt;script&gt; import Box from &#39;.&#x2F;Box&#39; e</span><br><span class="line">&gt;    xport default &#123;</span><br><span class="line">&gt;     components:&#123; Box &#125;,</span><br><span class="line">&gt;    data()&#123; </span><br><span class="line">&gt;    return &#123;</span><br><span class="line">&gt;     &#x2F;&#x2F; 保存子组件发送过来的数据 dataFromBox:&#39;&#39; &#125; </span><br><span class="line">&gt;     &#125;,</span><br><span class="line">&gt;     methods:&#123; </span><br><span class="line">&gt;     &#x2F;&#x2F; 自定义事件的处理函数</span><br><span class="line">&gt;      getData(params)&#123; &#x2F;&#x2F; console.log(params); </span><br><span class="line">&gt;      &#x2F;&#x2F; 更新数据 this.dataFromBox&#x3D;params; &#125; &#125; &#125;</span><br><span class="line">&gt;      &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="第二步-1"><a href="#第二步-1" class="headerlink" title="第二步"></a>第二步</h3><p>在子组件中通过 this.$emit(‘事件名称’,额外参数) 触发自定义事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div class&#x3D;&quot;alert alert-success&quot;&gt; </span><br><span class="line"> &lt;h1&gt;box子组件&lt;&#x2F;h1&gt;</span><br><span class="line">  &lt;hr&gt; &lt;button @click&#x3D;&quot;sendData&quot; class&#x3D;&quot;btn btn-info&quot;&gt;发送数据&lt;&#x2F;button&gt; </span><br><span class="line">  &lt;&#x2F;div&gt; &lt;&#x2F;template&gt;</span><br><span class="line">  &lt;script&gt; export default &#123; </span><br><span class="line">  data()&#123; </span><br><span class="line">  return &#123; </span><br><span class="line">  lists:[ &#123; id:1, name:&#39;vue&#39; &#125;,&#123; id:2, name:&#39;react&#39; &#125;,&#123; id:3, name:&#39;angular&#39; &#125; ] &#125; &#125;,</span><br><span class="line">  methods:&#123;</span><br><span class="line">  sendData()&#123; </span><br><span class="line">  &#x2F;&#x2F; 通过调用this.$emit()实现触发自定义事件</span><br><span class="line">   this.$emit(&#39;getData&#39;,this.lists); </span><br><span class="line">   &#125; </span><br><span class="line">   &#125; </span><br><span class="line">   &#125;</span><br><span class="line">  &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-兄弟之间传值"><a href="#3-兄弟之间传值" class="headerlink" title="3.兄弟之间传值"></a>3.兄弟之间传值</h2><p>通过自定义事件来实现兄弟组件之间的数据传递; 必须让事件的触发和监听在同一个vue实例上完成</p>
+<h3 id="第一步-2"><a href="#第一步-2" class="headerlink" title="第一步"></a>第一步</h3><p>创建一个空的vue实例对象vm, 帮助我们实现触发和监听自定义事件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import Vue from &#39;vue&#39; </span><br><span class="line">&#x2F;&#x2F; 这是一个空的vue实例对象, 目的是使用它完成兄弟组件之间的数据传递 </span><br><span class="line">export default new Vue();</span><br></pre></td></tr></table></figure>
+<h3 id="第二步-2"><a href="#第二步-2" class="headerlink" title="第二步"></a>第二步</h3><p>在组件Box1中通过 vm.$emit(‘事件名称’,’数据’) 触发一个自定义事件, 通过第二个参数进行数据<br>传递</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line"> &lt;div class&#x3D;&quot;alert alert-info&quot;&gt;</span><br><span class="line">  &lt;h1&gt;box1子组件&lt;&#x2F;h1&gt; </span><br><span class="line">  &lt;hr&gt; </span><br><span class="line">  &lt;button @click&#x3D;&quot;sendData&quot; class&#x3D;&quot;btn btn-primary&quot;&gt;发送数据给BOX&lt;&#x2F;button&gt; </span><br><span class="line"> &lt;&#x2F;div&gt; </span><br><span class="line"> &lt;&#x2F;template&gt; </span><br><span class="line"> &lt;script&gt; </span><br><span class="line"> &#x2F;&#x2F; 导入公共vue实例 import vm from &#39;..&#x2F;utils&#x2F;vm&#39; </span><br><span class="line"> export default &#123; methods:&#123; sendData()&#123;</span><br><span class="line">  &#x2F;&#x2F; 通过this.$emit()触发自定义事件, 实现发送数据 </span><br><span class="line">  vm.$emit(&#39;sendData&#39;,&#39;BOX1中的数据&#39;); &#125; &#125; &#125;</span><br><span class="line"> &lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="第三步"><a href="#第三步" class="headerlink" title="第三步"></a>第三步</h3><p>在组件Box中通过 vm.$on(‘事件名称’,function(params){}) 监听自定义事件的执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt; 下·下·</span><br><span class="line">&lt;div class&#x3D;&quot;alert alert-success&quot;&gt; </span><br><span class="line">&lt;h1&gt;box子组件&lt;&#x2F;h1&gt;</span><br><span class="line"> &lt;hr&gt; </span><br><span class="line"> &lt;h3&gt;&#123;&#123;dataFromBox1&#125;&#125;&lt;&#x2F;h3&gt; </span><br><span class="line"> &lt;hr&gt; </span><br><span class="line"> &lt;button @click&#x3D;&quot;sendData&quot; class&#x3D;&quot;btn btn-info&quot;&gt;发送数据给Wrap&lt;&#x2F;button&gt;</span><br><span class="line">  &lt;&#x2F;div&gt; &lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">&#x2F;&#x2F; 导入vm公共vue实例</span><br><span class="line"> import vm from &#39;..&#x2F;utils&#x2F;vm&#39;;</span><br><span class="line">  export default &#123;</span><br><span class="line">   data()&#123; </span><br><span class="line">	   return &#123; dataFromBox1:&#39;&#39; &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">    methods:&#123; </span><br><span class="line">	    sendData()&#123; </span><br><span class="line">	    &#x2F;&#x2F; 通过调用this.$emit()实现触发自定义事件</span><br><span class="line">  	   this.$emit(&#39;getData&#39;,this.lists); </span><br><span class="line">  		   &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">created()&#123;</span><br><span class="line">	 &#x2F;&#x2F; 通过vm.$on()监听自定义事件sendData的执行</span><br><span class="line">  vm.$on(&#39;sendData&#39;,(params)&#x3D;&gt;&#123; </span><br><span class="line">		  &#x2F;&#x2F; console.log(params); </span><br><span class="line">  		this.dataFromBox1&#x3D;params; &#125;);</span><br><span class="line">   &#125; &#125;</span><br><span class="line">   &lt;&#x2F;script&gt;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cklxelrqj0000nou34roo82vw" data-title="6.vue三种传值的方式" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-5.vm-set" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/05/5.vm-set/" class="article-date">
@@ -394,6 +462,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/06/vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/">6.vue三种传值的方式</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/05/5.vm-set/">5.vm.$set</a>
           </li>
         
@@ -407,10 +479,6 @@
         
           <li>
             <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">2.vue中productionSourceMap属性详解</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">1.hexo+github搭建个人博客教程（@刘桓）</a>
           </li>
         
       </ul>
