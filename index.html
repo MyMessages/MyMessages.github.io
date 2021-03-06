@@ -71,6 +71,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-8-vue导航守卫" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/" class="article-date">
+  <time class="dt-published" datetime="2021-03-06T12:19:45.000Z" itemprop="datePublished">2021-03-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/">8.vue导航守卫</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="路由导航首位"><a href="#路由导航首位" class="headerlink" title="路由导航首位"></a>路由导航首位</h1><h2 id="1-路由前置导航首位"><a href="#1-路由前置导航首位" class="headerlink" title="1.路由前置导航首位"></a>1.路由前置导航首位</h2><p>应用场景：在路由跳转之前执行的（具备拦截页面跳转的功能）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; to 即将去往的页面</span><br><span class="line">&#x2F;&#x2F; form  来源路由对象</span><br><span class="line">&#x2F;&#x2F; next 可以实现路由跳转，必须手动调用一次</span><br><span class="line">router.beforeEach(function(to,form,next)&#123;</span><br><span class="line">	if( to.path &#x3D;&#x3D;&#x3D; &#39;&#x2F;ucenter&#39; )&#123;</span><br><span class="line">		alert(&quot;禁止访问&quot;)</span><br><span class="line">		return next(&quot;&#x2F;login&quot;)</span><br><span class="line">	&#125;</span><br><span class="line">	&#x2F;&#x2F; 正常执行页面跳转</span><br><span class="line">	next()</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">export  default router;</span><br></pre></td></tr></table></figure>
+<h2 id="2-全局后置钩子"><a href="#2-全局后置钩子" class="headerlink" title="2.全局后置钩子"></a>2.全局后置钩子</h2><ul>
+<li>执行时机：页面跳转完成后才执行的（不具备拦截页面跳转的功能）</li>
+<li>应用场景：页面跳转后进行一些逻辑处理</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; to 即将前往的路由对象</span><br><span class="line">&#x2F;&#x2F; form  来源路由对象</span><br><span class="line">router.afterEatch( (to,form)&#x3D;&gt;&#123;</span><br><span class="line">   	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="3-路由独享守卫"><a href="#3-路由独享守卫" class="headerlink" title="3.路由独享守卫"></a>3.路由独享守卫</h2><ul>
+<li>触发时机：从其他页面遣往当前页面时 被触发</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&#x2F;&#x2F; to 即将去往的页面</span><br><span class="line">&#x2F;&#x2F; form  来源路由对象</span><br><span class="line">&#x2F;&#x2F; next 可以实现路由跳转，必须手动调用一次</span><br><span class="line"></span><br><span class="line">const  router &#x3D; new VueRouter(&#123;</span><br><span class="line">  routes：[</span><br><span class="line">  	&#123;</span><br><span class="line">  	    path:&quot;&#x2F;&quot;,</span><br><span class="line">  	    component: login,</span><br><span class="line">        beforeEnter:(to,form,next)&#x3D;&gt;&#123; </span><br><span class="line">            if(form.path &#x3D;&#x3D; &quot;&#x2F;SystemIndex&quot;)&#123;</span><br><span class="line">                    alert(&quot;禁止访问！&quot;)</span><br><span class="line">                    return false</span><br><span class="line">                &#125;</span><br><span class="line">                  next()</span><br><span class="line">            &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;) </span><br></pre></td></tr></table></figure>
+
+
+<h2 id="4-组件内的守卫"><a href="#4-组件内的守卫" class="headerlink" title="4.组件内的守卫"></a>4.组件内的守卫</h2><p>最后，你可以在路由组件内直接定义以下路由导航守卫：</p>
+<ul>
+<li><code>beforeRouteEnter</code></li>
+<li><code>beforeRouteUpdate</code> (2.2 新增)</li>
+<li><code>beforeRouteLeave</code></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">const Foo &#x3D; &#123;</span><br><span class="line">  template: &#96;...&#96;,</span><br><span class="line">  beforeRouteEnter (to, from, next) &#123;</span><br><span class="line">    &#x2F;&#x2F; 在渲染该组件的对应路由被 confirm 前调用</span><br><span class="line">    &#x2F;&#x2F; 不！能！获取组件实例 &#96;this&#96;</span><br><span class="line">    &#x2F;&#x2F; 因为当守卫执行前，组件实例还没被创建</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteUpdate (to, from, next) &#123;</span><br><span class="line">    &#x2F;&#x2F; 在当前路由改变，但是该组件被复用时调用</span><br><span class="line">    &#x2F;&#x2F; 举例来说，对于一个带有动态参数的路径 &#x2F;foo&#x2F;:id，在 &#x2F;foo&#x2F;1 和 &#x2F;foo&#x2F;2 之间跳转的时候，</span><br><span class="line">    &#x2F;&#x2F; 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。</span><br><span class="line">    &#x2F;&#x2F; 可以访问组件实例 &#96;this&#96;</span><br><span class="line">  &#125;,</span><br><span class="line">  beforeRouteLeave (to, from, next) &#123;</span><br><span class="line">    &#x2F;&#x2F; 导航离开该组件的对应路由时调用</span><br><span class="line">    &#x2F;&#x2F; 可以访问组件实例 &#96;this&#96;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<p><code>beforeRouteEnter</code> 守卫 <strong>不能</strong> 访问 <code>this</code>，因为守卫在导航确认前被调用，因此即将登场的新组件还没被创建。</p>
+<p>不过，你可以通过传一个回调给 <code>next</code>来访问组件实例。在导航被确认的时候执行回调，并且把组件实例作为回调方法的参数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteEnter (to, from, next) &#123;</span><br><span class="line">  next(vm &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; 通过 &#96;vm&#96; 访问组件实例</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意 <code>beforeRouteEnter</code> 是支持给 <code>next</code> 传递回调的唯一守卫。对于 <code>beforeRouteUpdate</code> 和 <code>beforeRouteLeave</code> 来说，<code>this</code> 已经可用了，所以<strong>不支持</strong>传递回调，因为没有必要了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteUpdate (to, from, next) &#123;</span><br><span class="line">  &#x2F;&#x2F; just use &#96;this&#96;</span><br><span class="line">  this.name &#x3D; to.params.name</span><br><span class="line">  next()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这个离开守卫通常用来禁止用户在还未保存修改前突然离开。该导航可以通过 <code>next(false)</code> 来取消</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">beforeRouteLeave (to, from, next) &#123;</span><br><span class="line">  const answer &#x3D; window.confirm(&#39;Do you really want to leave? you have unsaved changes!&#39;)</span><br><span class="line">  if (answer) &#123;</span><br><span class="line">    next()</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    next(false)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="完整的导航解析流程"><a href="#完整的导航解析流程" class="headerlink" title="完整的导航解析流程"></a>完整的导航解析流程</h2><ol>
+<li>导航被触发。</li>
+<li>在失活的组件里调用 <code>beforeRouteLeave</code> 守卫。</li>
+<li>调用全局的 <code>beforeEach</code> 守卫。</li>
+<li>在重用的组件里调用 <code>beforeRouteUpdate</code> 守卫 (2.2+)。</li>
+<li>在路由配置里调用 <code>beforeEnter</code>。</li>
+<li>解析异步路由组件。</li>
+<li>在被激活的组件里调用 <code>beforeRouteEnter</code>。</li>
+<li>调用全局的 <code>beforeResolve</code> 守卫 (2.5+)。</li>
+<li>导航被确认。</li>
+<li>调用全局的 <code>afterEach</code> 钩子。</li>
+<li>触发 DOM 更新。</li>
+<li>调用 <code>beforeRouteEnter</code> 守卫中传给 <code>next</code> 的回调函数，创建好的组件实例会作为回调函数的参数传入。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/" data-id="cklxsasa50007pou3b6rx9mrl" data-title="8.vue导航守卫" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/" rel="tag">路由导航守卫</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-7-vueX简介" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/" class="article-date">
@@ -178,7 +263,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/" data-id="cklxj9o3z000690u3cyvrcsns" data-title="7.vueX详细篇" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/" data-id="cklxsasa40006pou3frbq39gm" data-title="7.vueX详细篇" class="article-share-link">Share</a>
       
       
       
@@ -246,7 +331,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cklxj9o3w000590u3ef5z97wa" data-title="6.vue三种传值的方式" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/" data-id="cklxsas9z0005pou31tkqcrjd" data-title="6.vue三种传值的方式" class="article-share-link">Share</a>
       
       
       
@@ -302,7 +387,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/05/5.vm-set/" data-id="cklxj9o3v000390u3g4o2atrf" data-title="5.vm.$set" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/05/5.vm-set/" data-id="cklxsas9z0004pou3cr0s7xm0" data-title="5.vm.$set" class="article-share-link">Share</a>
       
       
       
@@ -352,7 +437,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/" data-id="cklxj9o3v000490u3e4n649g9" data-title="4.路由切换时页面刷新页面" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/" data-id="cklxsas9y0003pou3hwpq5jrn" data-title="4.路由切换时页面刷新页面" class="article-share-link">Share</a>
       
       
       
@@ -398,7 +483,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/" data-id="cklxj9o3u000290u30bsxb4er" data-title="3.vue打包背景图不显示" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/" data-id="cklxsas9x0002pou3foaehtml" data-title="3.vue打包背景图不显示" class="article-share-link">Share</a>
       
       
       
@@ -443,7 +528,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" data-id="cklxj9o3t000190u3fjse3lfq" data-title="2.vue中productionSourceMap属性详解" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" data-id="cklxsas9w0001pou320y95xmj" data-title="2.vue中productionSourceMap属性详解" class="article-share-link">Share</a>
       
       
       
@@ -538,7 +623,7 @@ state: &#123;
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" data-id="cklxj9o3o000090u35wfy138n" data-title="1.hexo+github搭建个人博客教程（@刘桓）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" data-id="cklxsas9s0000pou34u5y3453" data-title="1.hexo+github搭建个人博客教程（@刘桓）" class="article-share-link">Share</a>
       
       
       
@@ -560,9 +645,23 @@ state: &#123;
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/" rel="tag">路由导航守卫</a></li></ul>
+    </div>
+  </div>
+
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/%E8%B7%AF%E7%94%B1%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/" style="font-size: 10px;">路由导航守卫</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
@@ -581,6 +680,10 @@ state: &#123;
       <ul>
         
           <li>
+            <a href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/">8.vue导航守卫</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/">7.vueX详细篇</a>
           </li>
         
@@ -594,10 +697,6 @@ state: &#123;
         
           <li>
             <a href="/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">4.路由切换时页面刷新页面</a>
-          </li>
-        
-          <li>
-            <a href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">3.vue打包背景图不显示</a>
           </li>
         
       </ul>
