@@ -152,6 +152,130 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-15.css3新增选择器" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: 14.《单多行文本溢出处理》<br>date: 2021-03-07 16:32:35<br>tags:</p>
+<h1 id="css3新增选择器"><a href="#css3新增选择器" class="headerlink" title="css3新增选择器"></a><strong>css3新增选择器</strong></h1><p><strong>1、属性选择器</strong></p>
+<p><strong>（1）css2中的属性选择器</strong></p>
+<ul>
+<li><p>element[attr]   选中元素具有属性为 attr 的元素</p>
+<ul>
+<li>```<br> div[class]{<pre><code>color: red;
+</code></pre>
+ } <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- element[ attr &#x3D; val ]  选择具有指定属性名称为 attr  且属性值必须为value的元素(只能选中第一次出现的元素)</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    div[class&#x3D;&#39;box&#39;]&#123;</span><br><span class="line">    	color:red;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>element[ attr ~=  val ]    选中所有attr的属性值为 val 的元素</p>
+<ul>
+<li>```<br>div[ class ~= ‘box’ ]{<pre><code>color:red;
+</code></pre>
+}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**(2) css3中新增的属性选择器**</span><br><span class="line"></span><br><span class="line">- element[ attr ^&#x3D; val ]      选择属attr属性以  val 开头的元素</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    div[class ^&#x3D; &#39;box&#39;]&#123;</span><br><span class="line">    	color:red;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>element[ attr $= val ]      选择属attr属性以  val 结尾的元素</p>
+<ul>
+<li><pre><code>div[class $= &#39;box&#39;]&#123;
+    color:red;
+&#125;
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- element[attr*&#x3D;value]    选择属性 attr  包含 value 的所有元素</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    div[class *&#x3D; &#39;box&#39;]&#123;</span><br><span class="line">    	color:red;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>2、结构性伪类选择器</strong></p>
+<p><strong>（1）first-child</strong></p>
+<p>​    选择父元素中的第一个子元素E </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ul li:first-child&#123;</span><br><span class="line">	background:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>（2）last-child</strong></p>
+<p>​    选择父元素中的最后一个子元素E </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ul li:last-child&#123;</span><br><span class="line">	background:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>（2）nth-child()   </p>
+<p>选择父元素中的第n个子元素E</p>
+<p>n的取值可以是数字、关键词或者表达式</p>
+<ul>
+<li><p>数字</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ul li:nth-child(5) &#123; background-color: red; &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>关键词 odd奇数 even偶数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ul li:nth-child(odd) &#123; </span><br><span class="line">   background-color:</span><br><span class="line">   blueviolet; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ul li:nth-child(even) &#123;</span><br><span class="line">   background-color: pink; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>表达式 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ul li:nth-child(2n+1) &#123; </span><br><span class="line">    background-color: yellow; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p><strong>（4）nth-last-child()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:nth-last-child(n)&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>选择父元素中倒数第n个子元素E </p>
+<p>n的取值可以是数字、关键词、表达式</p>
+<p>注意：</p>
+<p>nth-child和nth-last-child，先计算第几个节点，在匹配选择器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* li:nth-last-child(3) &#123; </span><br><span class="line">background-color: blueviolet; </span><br><span class="line">&#125; *&#x2F; </span><br><span class="line"></span><br><span class="line">&#x2F;* </span><br><span class="line">li:nth-last-child(odd) &#123; </span><br><span class="line">   background-color: coral;    </span><br><span class="line">&#125; </span><br><span class="line"> li:nth-last-child(3n) &#123; </span><br><span class="line">     background-color: cornflowerblue; </span><br><span class="line">&#125;</span><br><span class="line">*&#x2F;</span><br></pre></td></tr></table></figure>
+<p><strong>（5) nth-of-type()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nth-of-type(n)</span><br></pre></td></tr></table></figure>
+<p>匹配属于父元素的特定类型的第 n 个子元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* </span><br><span class="line">.wrap div.box:nth-of-type(1) &#123;</span><br><span class="line">     background-color: cyan; </span><br><span class="line">&#125;</span><br><span class="line">*&#x2F; </span><br><span class="line">&#x2F;* </span><br><span class="line">.wrap p.box:nth-of-type(odd) &#123;</span><br><span class="line">      background-color: pink; </span><br><span class="line">&#125;</span><br><span class="line">*&#x2F;</span><br><span class="line">.wrap .box:nth-of-type(2n) &#123; </span><br><span class="line">   background-color: green; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>（ 6 ） nth-last-of-type()</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:nth-last-of-type(n)</span><br></pre></td></tr></table></figure>
+<p>匹配属于父元素的特定类型的第 N 个子元素的每个元素，从最后一个子元素开始计数</p>
+<p>注意：</p>
+<p>nth-of-type和nth-last-of-type，先将父元素中的元素按照标签名称分类，然后计算第几个节点，再匹</p>
+<p>配选择器</p>
+<p><strong>3、状态伪类选择器</strong></p>
+<p><strong>（1）enabled</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:enabled&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配用户界面上处于可用状态的元素</p>
+<p><strong>（2）disabled</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:disabled&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配用户界面上处于禁用状态的元素</p>
+<p><strong>（3）checked</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">E:checked&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>匹配用户界面上处于选中状态的元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">input[type&#x3D;&quot;text&quot;]:enabled &#123; </span><br><span class="line">     background-color: darkseagreen; </span><br><span class="line">&#125;</span><br><span class="line">input[type&#x3D;&quot;text&quot;]:disabled &#123;</span><br><span class="line">      background-color: yellow; </span><br><span class="line">&#125;</span><br><span class="line">input[type&#x3D;&quot;radio&quot;]:checked + span&#123; </span><br><span class="line">      background-color: deeppink;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/07/15.css3%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-14-单多行文本溢出处理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -582,7 +706,7 @@
       
         <h2 id="npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘"><a href="#npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘" class="headerlink" title="npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘"></a>npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘</h2><p>页面新增同事的echart图 ：直接报错”export ‘default’ (imported as ‘echarts’) was not found in ‘echarts’</p>
 <p>在Google 查出来一个问题说可能是版本问题，进行校验后发现确实我的5.0，同事的为4.9</p>
-<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#x65;&#x63;&#104;&#x61;&#x72;&#116;&#x73;&#x40;&#52;&#46;&#57;">&#x65;&#x63;&#104;&#x61;&#x72;&#116;&#x73;&#x40;&#52;&#46;&#57;</a>，</p>
+<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#x65;&#x63;&#104;&#x61;&#114;&#x74;&#115;&#64;&#52;&#46;&#x39;">&#x65;&#x63;&#104;&#x61;&#114;&#x74;&#115;&#64;&#52;&#46;&#x39;</a>，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts@4.9.0</span><br></pre></td></tr></table></figure>
 <p>一般是版本不兼容的问题</p>
 
@@ -940,86 +1064,6 @@ state: &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-5.vm-set" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/05/5.vm-set/">5.《vm.$set》</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/05/5.vm-set/" class="archive-article-date">
-  	<time datetime="2021-03-05T13:42:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vm-set"><a href="#vm-set" class="headerlink" title="vm.$set"></a><strong>vm.$set</strong></h1><ul>
-<li><p>作用: 更新vue实例数据模型中数组的某一个元素或对象的某一个属性</p>
-</li>
-<li><p>所属对象: vue 实例对象</p>
-</li>
-<li><p>别名: Vue.set()</p>
-</li>
-<li><p>底层实现原理</p>
-<ol>
-<li> 更新数组元素或对象的属性</li>
-<li> 通知视图层进行刷新</li>
-</ol>
-</li>
-<li><p>调用语法: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; vm.$set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值); </span><br><span class="line">&#x2F;&#x2F; Vue.set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const vm &#x3D; new Vue(&#123; el: &#39;#app&#39;, </span><br><span class="line">data: &#123; </span><br><span class="line">    msg: &#39;hello vue!!!&#39;, </span><br><span class="line">    users: [&#39;jack&#39;, &#39;rose&#39;, &#39;tom&#39;], </span><br><span class="line">    user:&#123;name:&#39;jack&#39;, age:20 &#125; </span><br><span class="line"> &#125;,</span><br><span class="line"> ethods: &#123; </span><br><span class="line">    getData() &#123; &#x2F;&#x2F; 为什么可以在方法中通过this关键字直接获取data中的数据?       				        console.log(this.msg);   </span><br><span class="line">      &#125; </span><br><span class="line">  &#125; </span><br><span class="line"> &#125;); </span><br><span class="line">    </span><br><span class="line">    vm.$set(vm.users, 3, &#39;pony&#39;); </span><br><span class="line">    Vue.set(vm.users, 4, &#39;robin&#39;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/05/5.vm-set/">展开全文 >></a>
         </p>
       
 

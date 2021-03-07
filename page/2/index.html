@@ -152,6 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-5.vm-set" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/05/5.vm-set/">5.《vm.$set》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/05/5.vm-set/" class="archive-article-date">
+  	<time datetime="2021-03-05T13:42:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vm-set"><a href="#vm-set" class="headerlink" title="vm.$set"></a><strong>vm.$set</strong></h1><ul>
+<li><p>作用: 更新vue实例数据模型中数组的某一个元素或对象的某一个属性</p>
+</li>
+<li><p>所属对象: vue 实例对象</p>
+</li>
+<li><p>别名: Vue.set()</p>
+</li>
+<li><p>底层实现原理</p>
+<ol>
+<li> 更新数组元素或对象的属性</li>
+<li> 通知视图层进行刷新</li>
+</ol>
+</li>
+<li><p>调用语法: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; vm.$set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值); </span><br><span class="line">&#x2F;&#x2F; Vue.set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const vm &#x3D; new Vue(&#123; el: &#39;#app&#39;, </span><br><span class="line">data: &#123; </span><br><span class="line">    msg: &#39;hello vue!!!&#39;, </span><br><span class="line">    users: [&#39;jack&#39;, &#39;rose&#39;, &#39;tom&#39;], </span><br><span class="line">    user:&#123;name:&#39;jack&#39;, age:20 &#125; </span><br><span class="line"> &#125;,</span><br><span class="line"> ethods: &#123; </span><br><span class="line">    getData() &#123; &#x2F;&#x2F; 为什么可以在方法中通过this关键字直接获取data中的数据?       				        console.log(this.msg);   </span><br><span class="line">      &#125; </span><br><span class="line">  &#125; </span><br><span class="line"> &#125;); </span><br><span class="line">    </span><br><span class="line">    vm.$set(vm.users, 3, &#39;pony&#39;); </span><br><span class="line">    Vue.set(vm.users, 4, &#39;robin&#39;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/05/5.vm-set/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="4.vue-4.路由切换时页面刷新页面" class="article article-type-4.vue  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
