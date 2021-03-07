@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>5.《vm.$set》 | 刘桓的个人GitHub博客</title>
+  <title>13.《this.$router.push()参数详解》 | 刘桓的个人GitHub博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="vm.$set 作用: 更新vue实例数据模型中数组的某一个元素或对象的某一个属性  所属对象: vue 实例对象  别名: Vue.set()  底层实现原理   更新数组元素或对象的属性  通知视图层进行刷新   调用语法:  12&#x2F;&#x2F; vm.$set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值); &#x2F;&#x2F; Vue.set(要操作的数组或对象">
+  <meta name="description" content="vue中this.$router.push路由传参以及获取方法通过this.$router.push路由跳转页面传递参数的方式，一般有两种方式： 1.params传参：12345678this.$router. push(&amp;#123;   name:&#39;parasetEdit&#39;,   params:&amp;#123;     pk_refinfo: &#39;test&#39;,">
 <meta property="og:type" content="article">
-<meta property="og:title" content="5.《vm.$set》">
-<meta property="og:url" content="http://example.com/2021/03/05/5.vm-set/index.html">
+<meta property="og:title" content="13.《this.$router.push()参数详解》">
+<meta property="og:url" content="http://example.com/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="刘桓的个人GitHub博客">
-<meta property="og:description" content="vm.$set 作用: 更新vue实例数据模型中数组的某一个元素或对象的某一个属性  所属对象: vue 实例对象  别名: Vue.set()  底层实现原理   更新数组元素或对象的属性  通知视图层进行刷新   调用语法:  12&#x2F;&#x2F; vm.$set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值); &#x2F;&#x2F; Vue.set(要操作的数组或对象">
+<meta property="og:description" content="vue中this.$router.push路由传参以及获取方法通过this.$router.push路由跳转页面传递参数的方式，一般有两种方式： 1.params传参：12345678this.$router. push(&amp;#123;   name:&#39;parasetEdit&#39;,   params:&amp;#123;     pk_refinfo: &#39;test&#39;,">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-05T13:42:38.000Z">
-<meta property="article:modified_time" content="2021-03-07T07:07:11.217Z">
+<meta property="article:published_time" content="2021-03-07T06:58:00.000Z">
+<meta property="article:modified_time" content="2021-03-07T07:03:35.721Z">
 <meta property="article:author" content="Liu_Huan">
 <meta name="twitter:card" content="summary">
   
@@ -154,44 +154,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-5.vm-set" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="13-13.this-router-push-参数详解" class="article article-type-13 " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      5.《vm.$set》
+      13.《this.$router.push()参数详解》
     </h1>
   
 
         
-        <a href="/2021/03/05/5.vm-set/" class="archive-article-date">
-  	<time datetime="2021-03-05T13:42:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-05</time>
+        <a href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2021-03-07T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="vm-set"><a href="#vm-set" class="headerlink" title="vm.$set"></a><strong>vm.$set</strong></h1><ul>
-<li><p>作用: 更新vue实例数据模型中数组的某一个元素或对象的某一个属性</p>
-</li>
-<li><p>所属对象: vue 实例对象</p>
-</li>
-<li><p>别名: Vue.set()</p>
-</li>
-<li><p>底层实现原理</p>
-<ol>
-<li> 更新数组元素或对象的属性</li>
-<li> 通知视图层进行刷新</li>
-</ol>
-</li>
-<li><p>调用语法: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; vm.$set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值); </span><br><span class="line">&#x2F;&#x2F; Vue.set(要操作的数组或对象, 数组索引或对象属性名, 要设置的值);</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const vm &#x3D; new Vue(&#123; el: &#39;#app&#39;, </span><br><span class="line">data: &#123; </span><br><span class="line">    msg: &#39;hello vue!!!&#39;, </span><br><span class="line">    users: [&#39;jack&#39;, &#39;rose&#39;, &#39;tom&#39;], </span><br><span class="line">    user:&#123;name:&#39;jack&#39;, age:20 &#125; </span><br><span class="line"> &#125;,</span><br><span class="line"> ethods: &#123; </span><br><span class="line">    getData() &#123; &#x2F;&#x2F; 为什么可以在方法中通过this关键字直接获取data中的数据?       				        console.log(this.msg);   </span><br><span class="line">      &#125; </span><br><span class="line">  &#125; </span><br><span class="line"> &#125;); </span><br><span class="line">    </span><br><span class="line">    vm.$set(vm.users, 3, &#39;pony&#39;); </span><br><span class="line">    Vue.set(vm.users, 4, &#39;robin&#39;);</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
+        <h1 id="vue中this-router-push路由传参以及获取方法"><a href="#vue中this-router-push路由传参以及获取方法" class="headerlink" title="vue中this.$router.push路由传参以及获取方法"></a>vue中this.$router.push路由传参以及获取方法</h1><p>通过<strong>this.$router.push</strong>路由跳转页面传递参数的方式，一般有两种方式：</p>
+<h2 id="1-params传参："><a href="#1-params传参：" class="headerlink" title="1.params传参："></a><strong>1.params传参：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.$router.</span><br><span class="line"> push(&#123;</span><br><span class="line">   name:&#39;parasetEdit&#39;,</span><br><span class="line">   params:&#123;</span><br><span class="line">     pk_refinfo: &#39;test&#39;,</span><br><span class="line">     value: &#39;test1&#39;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>目标页面接收参数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.params.value</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-query传参："><a href="#2-query传参：" class="headerlink" title="2.query传参："></a><strong>2.query传参：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> this.$router.</span><br><span class="line"> push(&#123;</span><br><span class="line">    path:&#39;&#x2F;uapbd&#x2F;paraset&#x2F;edit&#39;,</span><br><span class="line">    query:&#123;</span><br><span class="line">    pk_refinfo:&#39;test&#39;,</span><br><span class="line">    value:&#39;test1&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>目标页面接收参数</strong>    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.value</span><br></pre></td></tr></table></figure>
+
+
+<p>两种方式的区别是query传参的参数会带在url后边展示在地址栏，params传参的参数不会展示到地址栏。需要注意的是接收参数的时候是route而不是router。两种方式一一对应，名字不能混用。</p>
 
       
 
@@ -271,7 +265,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/05/5.vm-set/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +279,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          6.《vue三种传值的方式》
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">4.《路由切换时页面刷新页面》</div>
+    <a href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">12.《关于ElementUI中confirm确认弹窗的封装整理》</div>
       <i class="icon-circle-right"></i>
     </a>
   

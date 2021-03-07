@@ -152,6 +152,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="13-13.this-router-push-参数详解" class="article article-type-13  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/">13.《this.$router.push()参数详解》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2021-03-07T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vue中this-router-push路由传参以及获取方法"><a href="#vue中this-router-push路由传参以及获取方法" class="headerlink" title="vue中this.$router.push路由传参以及获取方法"></a>vue中this.$router.push路由传参以及获取方法</h1><p>通过<strong>this.$router.push</strong>路由跳转页面传递参数的方式，一般有两种方式：</p>
+<h2 id="1-params传参："><a href="#1-params传参：" class="headerlink" title="1.params传参："></a><strong>1.params传参：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">this.$router.</span><br><span class="line"> push(&#123;</span><br><span class="line">   name:&#39;parasetEdit&#39;,</span><br><span class="line">   params:&#123;</span><br><span class="line">     pk_refinfo: &#39;test&#39;,</span><br><span class="line">     value: &#39;test1&#39;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>目标页面接收参数：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.params.value</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="2-query传参："><a href="#2-query传参：" class="headerlink" title="2.query传参："></a><strong>2.query传参：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> this.$router.</span><br><span class="line"> push(&#123;</span><br><span class="line">    path:&#39;&#x2F;uapbd&#x2F;paraset&#x2F;edit&#39;,</span><br><span class="line">    query:&#123;</span><br><span class="line">    pk_refinfo:&#39;test&#39;,</span><br><span class="line">    value:&#39;test1&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong>目标页面接收参数</strong>    </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.value</span><br></pre></td></tr></table></figure>
+
+
+<p>两种方式的区别是query传参的参数会带在url后边展示在地址栏，params传参的参数不会展示到地址栏。需要注意的是接收参数的时候是route而不是router。两种方式一一对应，名字不能混用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-12-《关于ElementUI中confirm确认弹窗的封装整理》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -227,7 +301,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/">11.vue-seamless-scroll无缝滚动</a>
+      <a class="article-title" href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/">11.《vue-seamless-scroll无缝滚动》</a>
     </h1>
   
 
@@ -301,7 +375,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/10-element-ui%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9el-table%E6%9F%90%E4%B8%AA%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2/">10.element-ui动态更改el-table某个单元格字体颜色</a>
+      <a class="article-title" href="/2021/03/07/10-element-ui%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9el-table%E6%9F%90%E4%B8%AA%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2/">10.《element-ui动态更改el-table某个单元格字体颜色》</a>
     </h1>
   
 
@@ -368,7 +442,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/9.dev%E6%8A%A5%E9%94%99echarts/">9.npm run dev启动报错</a>
+      <a class="article-title" href="/2021/03/07/9.dev%E6%8A%A5%E9%94%99echarts/">9.《npm run dev启动报错 》</a>
     </h1>
   
 
@@ -383,7 +457,7 @@
       
         <h2 id="npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘"><a href="#npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘" class="headerlink" title="npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘"></a>npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘</h2><p>页面新增同事的echart图 ：直接报错”export ‘default’ (imported as ‘echarts’) was not found in ‘echarts’</p>
 <p>在Google 查出来一个问题说可能是版本问题，进行校验后发现确实我的5.0，同事的为4.9</p>
-<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#x65;&#99;&#x68;&#x61;&#114;&#116;&#x73;&#x40;&#x34;&#x2e;&#x39;">&#x65;&#99;&#x68;&#x61;&#114;&#116;&#x73;&#x40;&#x34;&#x2e;&#x39;</a>，</p>
+<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#x65;&#x63;&#x68;&#97;&#114;&#x74;&#x73;&#x40;&#52;&#46;&#x39;">&#x65;&#x63;&#x68;&#97;&#114;&#x74;&#x73;&#x40;&#52;&#46;&#x39;</a>，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts@4.9.0</span><br></pre></td></tr></table></figure>
 <p>一般是版本不兼容的问题</p>
 
@@ -435,7 +509,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/">8.vue导航守卫</a>
+      <a class="article-title" href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/">8.《vue导航守卫》</a>
     </h1>
   
 
@@ -542,7 +616,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/">7.vueX详细篇</a>
+      <a class="article-title" href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/">7.《vueX详细篇》</a>
     </h1>
   
 
@@ -685,7 +759,7 @@ state: &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/">6.vue三种传值的方式</a>
+      <a class="article-title" href="/2021/03/06/6.vue%E4%B8%89%E7%A7%8D%E4%BC%A0%E5%80%BC%E7%9A%84%E6%96%B9%E5%BC%8F/">6.《vue三种传值的方式》</a>
     </h1>
   
 
@@ -777,7 +851,7 @@ state: &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/05/5.vm-set/">5.vm.$set</a>
+      <a class="article-title" href="/2021/03/05/5.vm-set/">5.《vm.$set》</a>
     </h1>
   
 
@@ -857,7 +931,7 @@ state: &#123;
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">4.路由切换时页面刷新页面</a>
+      <a class="article-title" href="/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">4.《路由切换时页面刷新页面》</a>
     </h1>
   
 
@@ -895,76 +969,6 @@ state: &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/02/4.%E8%B7%AF%E7%94%B1%E5%88%87%E6%8D%A2%E6%97%B6%E9%A1%B5%E9%9D%A2%E5%88%B7%E6%96%B0%E9%A1%B5%E9%9D%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-3-vue打包背景图不显示" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">3.vue打包背景图不显示</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/" class="archive-article-date">
-  	<time datetime="2021-03-02T14:42:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Vue项目打包报错Failed-to-load-resource-net-ERR-FILE-NOT-FOUND"><a href="#Vue项目打包报错Failed-to-load-resource-net-ERR-FILE-NOT-FOUND" class="headerlink" title="Vue项目打包报错Failed to load resource: net::ERR_FILE_NOT_FOUND"></a>Vue项目打包报错Failed to load resource: net::ERR_FILE_NOT_FOUND</h1><h3 id="1-webpack-prod-conf-js-中output添加参数publicPath-’-‘"><a href="#1-webpack-prod-conf-js-中output添加参数publicPath-’-‘" class="headerlink" title="1.webpack.prod.conf.js 中output添加参数publicPath:’./‘"></a>1.webpack.prod.conf.js 中output添加参数publicPath:’./‘</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.webpack.prod.conf.js 中output添加参数publicPath:&#39;.&#x2F;&#39;</span><br></pre></td></tr></table></figure>
-<h3 id="2-修改webpack-base-conf-js中："><a href="#2-修改webpack-base-conf-js中：" class="headerlink" title="2.修改webpack.base.conf.js中："></a>2.修改webpack.base.conf.js中：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">publicPath: process.env.NODE_ENV &#x3D;&#x3D;&#x3D; &#39;production&#39;</span><br><span class="line"></span><br><span class="line">? &#39;.&#x2F;&#39; +config.build.assetsPublicPath</span><br><span class="line"></span><br><span class="line">: &#39;.&#x2F;&#39; + config.dev.assetsPublicPath</span><br></pre></td></tr></table></figure>
-<h3 id="3-如果还有问题："><a href="#3-如果还有问题：" class="headerlink" title="3.如果还有问题："></a>3.如果还有问题：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">找到config文件里面的index.js</span><br><span class="line"></span><br><span class="line">修改build里面的assetsPublicPath；</span><br><span class="line"></span><br><span class="line">assetsPublicPath: &#39;&#x2F;&#39;,</span><br></pre></td></tr></table></figure>
-<h2 id="4-对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案"><a href="#4-对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案" class="headerlink" title="4.对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案"></a>4.对开发完的项目打包放到服务器上，在本地跑的时候一切正常，但是在服务器上跑的时候发现登录页面的背景图没有了，是一片空白，为此找到了一下解决方案</h2><p><strong>在build 下的 utils.js中找到：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">if (options.extract) &#123;</span><br><span class="line">      return ExtractTextPlugin.extract(&#123;</span><br><span class="line">        use: loaders,</span><br><span class="line">        fallback: &#39;vue-style-loader&#39;,</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return [&#39;vue-style-loader&#39;].concat(loaders)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>并添加 publicPath: ‘../../‘</p>
-<p>添加后的效果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">if (options.extract) &#123;</span><br><span class="line">      return ExtractTextPlugin.extract(&#123;</span><br><span class="line">        use: loaders,</span><br><span class="line">        fallback: &#39;vue-style-loader&#39;,</span><br><span class="line">        publicPath: &#39;..&#x2F;..&#x2F;&#39;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      return [&#39;vue-style-loader&#39;].concat(loaders)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">展开全文 >></a>
         </p>
       
 
