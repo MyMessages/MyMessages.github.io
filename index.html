@@ -152,6 +152,74 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-12-《关于ElementUI中confirm确认弹窗的封装整理》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/">12.《关于ElementUI中confirm确认弹窗的封装整理》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-07T06:39:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="封装的ElementUI中confirm确认弹窗"><a href="#封装的ElementUI中confirm确认弹窗" class="headerlink" title="封装的ElementUI中confirm确认弹窗"></a>封装的ElementUI中confirm确认弹窗</h2><p><strong>在实际项目开发中，我们删除某一项时，都会有一个弹框让您进行确认操作，这样你会写无数个弹框，非常麻烦，所以，为了方便，个人对弹框进行了封装，希望大家能有所成长</strong></p>
+<p>1.将封装的代码挂在到原型对象上，任何地方通过 this  可以访问，element.js 最终要在 main.js中导入,如果你在原型对象上进行了挂在，就不用导入了</p>
+<p>element.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$confirm&#x3D; (text) &#x3D;&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    MessageBox.confirm(text, &#39;提示&#39;,&#123;</span><br><span class="line">      confirmButtonClass: &#39;btnFalses&#39; </span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      confirmButtonText: &#39;确定&#39;,</span><br><span class="line">      cancelButtonText: &#39;取消&#39;,</span><br><span class="line">      type: &#39;warning&#39;</span><br><span class="line">    &#125;).then((res) &#x3D;&gt; &#123; </span><br><span class="line">      resolve(true)</span><br><span class="line">    &#125;).catch((res) &#x3D;&gt; &#123; </span><br><span class="line">      Message.info(&#39;已取消&#39;)</span><br><span class="line">      reject(false)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).catch(() &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; 可对错误进行处理</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.在相应的vue组件进行使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label&#x3D;&quot;操作&quot; width&#x3D;&quot;400&quot;&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot; @click&#x3D;&quot;$router.push(&#39;&#x2F;specAction&#x2F;specDetalis&#39;)&quot;&gt;查看详情&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot;&gt;编辑&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot;&gt;更新&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot; @click&#x3D;&quot;del&quot;&gt;删除&lt;&#x2F;span&gt; </span><br><span class="line"> &lt;&#x2F;el-table-column&gt;</span><br><span class="line"> </span><br><span class="line">methods: &#123;</span><br><span class="line">    &#x2F;&#x2F; 删除</span><br><span class="line">    async  del()&#123; </span><br><span class="line">         const res &#x3D; await this.$confirm(&#39;确认要删除吗？&#39;)</span><br><span class="line">          if(res)&#123;</span><br><span class="line">            this.$success(&quot;你确认惹删除！&quot;)</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-11.vue-seamless-scroll无缝滚动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -315,7 +383,7 @@
       
         <h2 id="npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘"><a href="#npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘" class="headerlink" title="npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘"></a>npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘</h2><p>页面新增同事的echart图 ：直接报错”export ‘default’ (imported as ‘echarts’) was not found in ‘echarts’</p>
 <p>在Google 查出来一个问题说可能是版本问题，进行校验后发现确实我的5.0，同事的为4.9</p>
-<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#101;&#x63;&#x68;&#97;&#114;&#x74;&#115;&#x40;&#x34;&#x2e;&#x39;">&#101;&#x63;&#x68;&#97;&#114;&#x74;&#115;&#x40;&#x34;&#x2e;&#x39;</a>，</p>
+<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#x65;&#99;&#x68;&#x61;&#114;&#116;&#x73;&#x40;&#x34;&#x2e;&#x39;">&#x65;&#99;&#x68;&#x61;&#114;&#116;&#x73;&#x40;&#x34;&#x2e;&#x39;</a>，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts@4.9.0</span><br></pre></td></tr></table></figure>
 <p>一般是版本不兼容的问题</p>
 
@@ -897,75 +965,6 @@ state: &#123;
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/02/3-vue%E6%89%93%E5%8C%85%E8%83%8C%E6%99%AF%E5%9B%BE%E4%B8%8D%E6%98%BE%E7%A4%BA/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-2-vue中productionSourceMap属性详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">2.vue中productionSourceMap属性详解</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-03-02T14:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-设置-productionSourceMap"><a href="#vue-设置-productionSourceMap" class="headerlink" title="vue 设置 productionSourceMap"></a>vue 设置 productionSourceMap</h1><p><strong>Vue打包后出现一些map文件的解决办法：</strong></p>
-<p>问题： <strong>可能很多人在做vue项目打包，打包之后js中，会自动生成一些map文件，那我们怎么把它去掉不要呢？</strong></p>
-<p>1，运行 cnpm run build 开始打包</p>
-<p>2，会在项目目录下自动创建dist目录，打包好的文件都在其中</p>
-<p>解决办法：去src/config/index.js中改一个参数：</p>
-<h3 id="productionSourceMap-false"><a href="#productionSourceMap-false" class="headerlink" title="productionSourceMap:false"></a>productionSourceMap:false</h3><p>把这个改为false。不然在最终打包的文件中会出现一些map文件，map文件的作用在于：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。</p>
-<p>有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
         </p>
       
 

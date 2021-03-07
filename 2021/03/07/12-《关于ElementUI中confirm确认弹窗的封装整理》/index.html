@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>刘桓的个人GitHub博客</title>
+  <title>12.《关于ElementUI中confirm确认弹窗的封装整理》 | 刘桓的个人GitHub博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="刘桓的个人GitHub博客">
-<meta property="og:url" content="http://example.com/page/2/index.html">
+  <meta name="description" content="封装的ElementUI中confirm确认弹窗在实际项目开发中，我们删除某一项时，都会有一个弹框让您进行确认操作，这样你会写无数个弹框，非常麻烦，所以，为了方便，个人对弹框进行了封装，希望大家能有所成长 1.将封装的代码挂在到原型对象上，任何地方通过 this  可以访问，element.js 最终要在 main.js中导入,如果你在原型对象上进行了挂在，就不用导入了 element.js 12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="12.《关于ElementUI中confirm确认弹窗的封装整理》">
+<meta property="og:url" content="http://example.com/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/index.html">
 <meta property="og:site_name" content="刘桓的个人GitHub博客">
+<meta property="og:description" content="封装的ElementUI中confirm确认弹窗在实际项目开发中，我们删除某一项时，都会有一个弹框让您进行确认操作，这样你会写无数个弹框，非常麻烦，所以，为了方便，个人对弹框进行了封装，希望大家能有所成长 1.将封装的代码挂在到原型对象上，任何地方通过 this  可以访问，element.js 最终要在 main.js中导入,如果你在原型对象上进行了挂在，就不用导入了 element.js 12">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-07T06:39:14.000Z">
+<meta property="article:modified_time" content="2021-03-07T06:47:15.694Z">
 <meta property="article:author" content="Liu_Huan">
 <meta name="twitter:card" content="summary">
   
@@ -150,38 +154,56 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-2-vue中productionSourceMap属性详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-12-《关于ElementUI中confirm确认弹窗的封装整理》" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">2.vue中productionSourceMap属性详解</a>
+    <h1 class="article-title" itemprop="name">
+      12.《关于ElementUI中confirm确认弹窗的封装整理》
     </h1>
   
 
         
-        <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-03-02T14:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
+        <a href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-07T06:39:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="vue-设置-productionSourceMap"><a href="#vue-设置-productionSourceMap" class="headerlink" title="vue 设置 productionSourceMap"></a>vue 设置 productionSourceMap</h1><p><strong>Vue打包后出现一些map文件的解决办法：</strong></p>
-<p>问题： <strong>可能很多人在做vue项目打包，打包之后js中，会自动生成一些map文件，那我们怎么把它去掉不要呢？</strong></p>
-<p>1，运行 cnpm run build 开始打包</p>
-<p>2，会在项目目录下自动创建dist目录，打包好的文件都在其中</p>
-<p>解决办法：去src/config/index.js中改一个参数：</p>
-<h3 id="productionSourceMap-false"><a href="#productionSourceMap-false" class="headerlink" title="productionSourceMap:false"></a>productionSourceMap:false</h3><p>把这个改为false。不然在最终打包的文件中会出现一些map文件，map文件的作用在于：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。</p>
-<p>有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。</p>
+        <h2 id="封装的ElementUI中confirm确认弹窗"><a href="#封装的ElementUI中confirm确认弹窗" class="headerlink" title="封装的ElementUI中confirm确认弹窗"></a>封装的ElementUI中confirm确认弹窗</h2><p><strong>在实际项目开发中，我们删除某一项时，都会有一个弹框让您进行确认操作，这样你会写无数个弹框，非常麻烦，所以，为了方便，个人对弹框进行了封装，希望大家能有所成长</strong></p>
+<p>1.将封装的代码挂在到原型对象上，任何地方通过 this  可以访问，element.js 最终要在 main.js中导入,如果你在原型对象上进行了挂在，就不用导入了</p>
+<p>element.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$confirm&#x3D; (text) &#x3D;&gt; &#123;</span><br><span class="line">  return new Promise((resolve, reject) &#x3D;&gt; &#123;</span><br><span class="line">    MessageBox.confirm(text, &#39;提示&#39;,&#123;</span><br><span class="line">      confirmButtonClass: &#39;btnFalses&#39; </span><br><span class="line">    &#125;, &#123;</span><br><span class="line">      confirmButtonText: &#39;确定&#39;,</span><br><span class="line">      cancelButtonText: &#39;取消&#39;,</span><br><span class="line">      type: &#39;warning&#39;</span><br><span class="line">    &#125;).then((res) &#x3D;&gt; &#123; </span><br><span class="line">      resolve(true)</span><br><span class="line">    &#125;).catch((res) &#x3D;&gt; &#123; </span><br><span class="line">      Message.info(&#39;已取消&#39;)</span><br><span class="line">      reject(false)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;).catch(() &#x3D;&gt; &#123;</span><br><span class="line">    &#x2F;&#x2F; 可对错误进行处理</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.在相应的vue组件进行使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table-column label&#x3D;&quot;操作&quot; width&#x3D;&quot;400&quot;&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot; @click&#x3D;&quot;$router.push(&#39;&#x2F;specAction&#x2F;specDetalis&#39;)&quot;&gt;查看详情&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot;&gt;编辑&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot;&gt;更新&lt;&#x2F;span&gt;</span><br><span class="line">             &lt;span class&#x3D;&quot;opan&quot; @click&#x3D;&quot;del&quot;&gt;删除&lt;&#x2F;span&gt; </span><br><span class="line"> &lt;&#x2F;el-table-column&gt;</span><br><span class="line"> </span><br><span class="line">methods: &#123;</span><br><span class="line">    &#x2F;&#x2F; 删除</span><br><span class="line">    async  del()&#123; </span><br><span class="line">         const res &#x3D; await this.$confirm(&#39;确认要删除吗？&#39;)</span><br><span class="line">          if(res)&#123;</span><br><span class="line">            this.$success(&quot;你确认惹删除！&quot;)</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
 
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -190,16 +212,75 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">11.vue-seamless-scroll无缝滚动</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -219,131 +300,14 @@
 
 
 
-
-  
-    <article id="post-1-hexo-github搭建个人博客教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">1.hexo+github搭建个人博客教程（@刘桓）</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-02-20T15:04:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言：</strong></h2><h5 id="是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。"><a href="#是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。" class="headerlink" title="是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。"></a>是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。</h5><h2 id="个人博客展示"><a href="#个人博客展示" class="headerlink" title="个人博客展示"></a>个人博客展示</h2><h2 id="我的博客展示"><a href="#我的博客展示" class="headerlink" title="我的博客展示"></a><a target="_blank" rel="noopener" href="https://mymessages.github.io/">我的博客展示</a></h2><hr>
-<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo ?"></a><strong>什么是Hexo ?</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</p>
-<h2 id="搭建步骤："><a href="#搭建步骤：" class="headerlink" title="搭建步骤："></a><strong>搭建步骤：</strong></h2><ul>
-<li> GitHub创建个人仓库</li>
-<li>安装Git</li>
-<li>安装Node.js</li>
-<li>安装Hexo</li>
-<li>推送网站</li>
-<li>暂时不绑定域名</li>
-</ul>
-<h2 id="1-GitHub创建个人仓库"><a href="#1-GitHub创建个人仓库" class="headerlink" title="1.GitHub创建个人仓库"></a>1.GitHub创建个人仓库</h2><p>登录到GitHub,如果没有GitHub帐号，点击GitHub中的New repository创建新仓库，仓库名应该为：<strong>用户名</strong>.<a href="https://link.zhihu.com/?target=http://github.io">http://github.io</a> <strong>用户名</strong>.<a href="https://link.zhihu.com/?target=http://github.io">http://github.io</a> 这个<strong>用户名</strong>使用你的GitHub帐号名称代替，这是固定写法，比如我的仓库名为：</p>
-<p><img src="file:///C:/Users/20650/AppData/Local/Microsoft/Windows/Clipboard/HistoryData/%7B7F7E2AA2-56C3-40EB-9198-FD47303A0336%7D/%7B3CE150CB-8D12-4304-A4E8-68F83450474F%7D/ResourceMap/%7BDE38E306-1F9F-410B-9B0B-49FFEB499BCB%7D" alt="img"></p>
-<h2 id="MyMessages-github-io"><a href="#MyMessages-github-io" class="headerlink" title="MyMessages.github.io"></a>MyMessages.github.io</h2><h2 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h2><p>什么是Git ?简单来说Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。我们网站在本地搭建好了，需要使用Git同步到GitHub上。</p>
-<p>安装成功后，将你的Git与GitHub帐号绑定，鼠标右击打开Git Bash</p>
-<p>或者在菜单里搜索Git Bash，设置user.name和user.email配置信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>生成ssh密钥文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>打开<a href="https://link.zhihu.com/?target=https://github.com/settings/keys">GitHub_Settings_keys</a> 页面，新建new SSH Key（把公钥添加到github上）</p>
-<p>这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h2 id="3-安装Node-js"><a href="#3-安装Node-js" class="headerlink" title="3.安装Node.js"></a>3.<strong>安装Node.js</strong></h2><p>exo基于Node.js，Node.js下载地址：<a href="https://link.zhihu.com/?target=https://nodejs.org/en/download/">Download | Node.js</a> 下载安装包，注意安装Node.js会包含环境变量及npm的安装，安装后，检测Node.js是否安装成功，在命令行中输入 node -v :</p>
-<p>检测npm是否安装成功，在命令行中输入npm -v :</p>
-<p>到这了，安装Hexo的环境已经全部搭建完成。</p>
-<h2 id="4-安装Hexo"><a href="#4-安装Hexo" class="headerlink" title="4.安装Hexo"></a>4.<strong>安装Hexo</strong></h2><p>Hexo就是我们的个人博客网站的框架， 这里需要自己在电脑常里创建一个文件夹，可以命名为Blog，Hexo框架与以后你自己发布的网页都在这个文件夹中。创建好后，进入文件夹中，按住shift键，右击鼠标点击命令行</p>
-<p>使用npm命令安装Hexo，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-
-<p>安装完成后，初始化我们的博客，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>注意：这里的  blog 始自己随便取的</p>
-<p>为了检测我们的网站雏形，分别按顺序输入以下三条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-
-<p>这些命令在后面作介绍，完成后，打开浏览器输入地址：</p>
-<p>localhost:4000</p>
-<p>之后就可以看到 自己搭建的 名称为 test_my_site 的 本地博客</p>
-<h2 id="常用的Hexo-命令"><a href="#常用的Hexo-命令" class="headerlink" title="常用的Hexo 命令"></a>常用的Hexo 命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm  install hexo -g   &#x2F;&#x2F; 安装Hexo</span><br><span class="line"></span><br><span class="line">npm  update hexo -g     &#x2F;&#x2F; 升级</span><br><span class="line"></span><br><span class="line">hexo init    &#x2F;&#x2F; 初始化博客</span><br></pre></td></tr></table></figure>
-<p>简写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line"></span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line"></span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line"></span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署到github上</span><br></pre></td></tr></table></figure>
-<p>其他命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexo server     #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line"></span><br><span class="line">hexo server -s      #静态模式</span><br><span class="line"></span><br><span class="line">hexo server -p 5000       #更改端口</span><br><span class="line"></span><br><span class="line">hexo server -i 192.168.1.1       #自定义 IP</span><br><span class="line"></span><br><span class="line">hexo clean      #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="5-推送网站"><a href="#5-推送网站" class="headerlink" title="5.推送网站"></a>5.<strong>推送网站</strong></h2><p>上面只是在本地预览，接下来要做的就是就是推送网站，也就是发布网站，让我们的网站可以被更多的人访问。在设置之前，需要解释一个概念，在blog根目录里的_config.yml文件称为<strong>站点</strong>配置文件，</p>
-<p>下一步将我们的Hexo与GitHub关联起来，打开站点的配置文件_config.yml，翻到最后修改为：</p>
-<p>deploy:<br>type: git<br>repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git<br>branch: master</p>
-<p>参考如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;MyMessages&#x2F;MyMessages.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>保存站点配置文件</p>
-<p>其实就是给hexo d 这个命令做相应的配置，让hexo知道你要把blog部署在哪个位置，很显然，我们部署在我们GitHub的仓库里。最后安装Git部署插件，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>这时，我们分别输入三条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>其实第三条的 hexo d 就是部署网站命令，d是deploy的缩写。完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即 <a href="https://link.zhihu.com/?target=http://xxxx.github.io">http://xxxx.github.io</a> </p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a><strong>绑定域名</strong></h2><p>———–暂时先不绑定—————</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -366,8 +330,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
