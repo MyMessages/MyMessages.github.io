@@ -152,6 +152,76 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-17-《js中函数的作用域》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/12/17-%E3%80%8Ajs%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%8B/">17.《js中函数的作用域》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/12/17-%E3%80%8Ajs%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-12T08:26:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="js中函数的作用域–详细篇"><a href="#js中函数的作用域–详细篇" class="headerlink" title="js中函数的作用域–详细篇"></a>js中函数的作用域–详细篇</h1><h2 id="案例1"><a href="#案例1" class="headerlink" title="案例1"></a>案例1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var  a &#x3D; 2;</span><br><span class="line">function show()&#123;</span><br><span class="line">	a++;</span><br><span class="line">	console.log(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">show() &#x2F;&#x2F; 3</span><br><span class="line">show() &#x2F;&#x2F; 4</span><br><span class="line">alert(a) &#x2F;&#x2F; 2</span><br></pre></td></tr></table></figure>
+<p>注意: 任何程序执行都会占用内存空间(空间的大小一般由函数内部的变量和参数决定的)，函数调用的时候也会占用内存空间，谭舒在调用的时候会给函数分配内存空间，当函数调用（使用）完毕后，会把内存释放出去，还给系统，这个机制叫做垃圾回收机制，</p>
+<h2 id="案例二"><a href="#案例二" class="headerlink" title="案例二"></a>案例二</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function  show()&#123;</span><br><span class="line">   avr a &#x3D; 0;</span><br><span class="line">   a++;</span><br><span class="line">   alert(a)</span><br><span class="line">&#125;</span><br><span class="line">show()</span><br><span class="line">show()</span><br><span class="line">alert(a)</span><br></pre></td></tr></table></figure>
+<p>什么时内存管理机制？</p>
+<p>在函数内申明的变量和形参，会随着函数的调用被创建，随着函数的调用完毕被销毁，作用域在函数的{}括号内部，也就是函数的内壁，属于局部作用域.</p>
+<h2 id="案例3"><a href="#案例3" class="headerlink" title="案例3"></a>案例3</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var  a&#x3D;10,b&#x3D;20,</span><br><span class="line">function show(a)&#123;</span><br><span class="line">	var b &#x3D; 100;</span><br><span class="line">	a+&#x3D;5</span><br><span class="line">	alert(a+&#39;&#39;+b)</span><br><span class="line">&#125;</span><br><span class="line">show(a)   &#x2F;&#x2F; 15 , 100</span><br><span class="line">alert(a,b) &#x2F;&#x2F; 10 20</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>就近原则：</p>
+<p>在不同作用域遇到相同变量，那个变量进就使用那个变量</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/12/17-%E3%80%8Ajs%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-16.element-ui两种格式化时间方法的封装》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -923,149 +993,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/06/8-vue%E5%AF%BC%E8%88%AA%E5%AE%88%E5%8D%AB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-7-vueX简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/">7.《vueX详细篇》</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/" class="archive-article-date">
-  	<time datetime="2021-03-06T07:35:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vueX简介"><a href="#vueX简介" class="headerlink" title="vueX简介"></a>vueX简介</h1><p>vuex实现组件间数据共享的方案，可以方便组件之间的传值</p>
-<h2 id="vuex好处："><a href="#vuex好处：" class="headerlink" title="vuex好处："></a>vuex好处：</h2><p>1.能够在vuex中几种管理共享的数据。易于开发和后期维护</p>
-<p>2.能搞高效的实现组件之间的共享数据，提高开发效率</p>
-<p>3.存储在vuex中的数据都是响应式的，实时保持数据与页面的同步</p>
-<p>注意：只有共享的数据可以存储到vuex中，组件内的独有数据，存在自己的data中</p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ul>
-<li><p>安装依赖</p>
-<ul>
-<li>```<br>npm  install  vuex –save<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 导入vuex包</span><br><span class="line"></span><br><span class="line">  - &#96;&#96;&#96;</span><br><span class="line">    import vuex &quot;vuex&quot;</span><br><span class="line">    Vue.use(vuex)</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li><p>创建store对象</p>
-<ul>
-<li><pre><code>new Vuex.store(&#123;
-    // state中存放的时全局共享的数据
-    state:&#123;
-      count:0
-    &#125;
-&#125;)
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 将实例stire挂载到Vue实例对象中</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-new Vue(&#123;
-el: &#39;#app&#39;,
-components: &#123; App,vuex&#125;,
-template: &#39;&lt;App/&gt;&#39;
-&#125;)
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## vuex的核心概念</span><br><span class="line"></span><br><span class="line">- ### State</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-State 提供了唯一的公共数据源，所有的共享数据就都要放在state内
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">组件访问state中数据的第一种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-this.$store.State.数据名称
-// 例如
-&lt;p&gt;当前count数据是：&#123;&#123;$store.state.count&#125;&#125;&lt;/p&gt;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">组件访问state中数据的第二种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-// 1.从 vuex 中按需导入 mapstate 函数
-import &#123; mapstate &#125;  from &#39;vuex&#39;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-// 2. 将全局数据，映射为当前组件的计算属性
-computed:&#123;
- ...mapState([&#39;count&#39;])
-&#125;
-// 使用
-&lt;p&gt;&#123;&#123; count &#125;&#125;&lt;p&gt;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- ### Mutation</span><br><span class="line"></span><br><span class="line">  - 用于变更 State 中的数据，也就是 更新 state 中的数据（vuex只能在Mutation中操作State中的数据）</span><br><span class="line">  - 不要再 Mutation 函数中使用异步操作！！！！！</span><br><span class="line"></span><br><span class="line">    组件访问 Mutation 中数据的第一种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-this.$store.commit(&quot;add&quot;,step)  // Mutation中定义的方法   step 为步长 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">组件访问 Mutation 中数据的第二种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-methods:&#123;
-  ...mapMutations([&#39;add&#39;,&#39;addN&#39;])   // add,addn 分别为 Mutations中自定义的两种方法
-&#125;
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">- ### Action</span><br><span class="line"></span><br><span class="line">- Action专门处理异步操作, 但是在Action中还是要通过触发mutation的方式来间接变更数据</span><br><span class="line"></span><br><span class="line">第一种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-state: &#123;
-    count: 0
-&#125;, 
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<p>mutations: {<br>        adds(state,setp){<br>           state.count += setp<br>        },<br>    },<br>   // 用于处理异步任务<br>    actions: {<br>       addAsync(content，setp){<br>          setTimeout(() =&gt; {<br>            content.commit(“adds”,setp)<br>          }, 1000);<br>       }<br>    },</p>
-<p>// 页面中使用<br> <p></p><br> &lt;button @click=”asyncs”&gt;async+1</button></p>
-<p>   methods:{<br>        asyncs(){<br>            this.$store.dispatch(“addAsync”,3)<br>        },<br>}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">第二种方式 </span><br><span class="line"></span><br><span class="line">store.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p> const store = new vuex.Store({<br>    state: {<br>        count: 0<br>    },<br>    // 只有mutations中定义的函数 才可以修改state中的数据<br>    mutations: {<br>        add(state,step){<br>            state.count += step<br>        },<br>    },<br> // 用于处理异步任务<br>   actions: {<br>       addAsync(content,step){<br>         setTimeout(() =&gt; {<br>           content.commit(“add”,step)<br>             }, 1000);<br>         }<br>      },<br>})</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">页面显示</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-  <p></p>
- <button @click="asyncs">async+1</button>
- 
- import { mapActions } from "vuex";   
-
-<p>  methods:{<br>        …mapActions([‘addAsync’]),<br>        asyncs(){<br>            // 第一种方式<br>            // this.$store.dispatch(“addAsync”,3)<br>            // 第二种方式<br>            this.addAsync(3)<br>        },<br>   }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- ### Getter</span><br><span class="line"></span><br><span class="line">  Getter 可以对Store中已有的数据加工处理之后形成新的数据，类似vue中的component计算属性</span><br><span class="line"></span><br><span class="line">  store中的数据发生变化时，Getter中的数据也会跟着变化</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">  第一种方式</span><br><span class="line"></span><br><span class="line">  store.js</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>// 用于对state中的数据进行加工，形成新的数据，  类似于 vue中的计算属性<br>    getters: {<br>        showNum(state){<br>            return ‘当前最新的数据时’+ state.count+’’<br>        }<br>    }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">页面显示</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-  <h1></h1>     
-
-<p>import { mapGetters } from “vuex”;</p>
-<p>computed:{<br>     …mapGetters([‘showNum’])<br>  },</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">第二种方式</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p> getters: {<br>        showNum(state){<br>            return ‘当前最新的数据时’+ state.count+’’<br>        }<br>    }</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
- <h1></h1>  
-```
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/06/7-vueX%E7%AE%80%E4%BB%8B/">展开全文 >></a>
         </p>
       
 
