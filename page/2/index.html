@@ -152,6 +152,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-11.vue-seamless-scroll无缝滚动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/">11.《vue-seamless-scroll无缝滚动》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/" class="archive-article-date">
+  	<time datetime="2021-03-07T05:59:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 有时候我们要完成如下图的滚动行为，方向可以向上也可以向下，时间 速度 都可以进行控制，在我们</p>
+<p>vue-seamless-scroll 官方有很好的案例，接下来一一讲解</p>
+<p>官方网址：<a target="_blank" rel="noopener" href="https://chenxuan1993.gitee.io/component-document/index_prod#/component/seamless-default">无缝滚动</a></p>
+<p><img src="C:\Users\20650\AppData\Roaming\Typora\typora-user-images\image-20210307140351297.png" alt="image-20210307140351297"></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="在-vue-中使用-vue-seamless-scroll-无缝滚动"><a href="#在-vue-中使用-vue-seamless-scroll-无缝滚动" class="headerlink" title="在 vue 中使用  vue-seamless-scroll  无缝滚动"></a>在 vue 中使用  vue-seamless-scroll  无缝滚动</h2><h3 id="1-cnpm-安装："><a href="#1-cnpm-安装：" class="headerlink" title="1.cnpm 安装："></a>1.cnpm 安装：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install vue-seamless-scroll --save      （自行下载即可，也可使用npm）</span><br></pre></td></tr></table></figure>
+<h3 id="2、引入（main-js）"><a href="#2、引入（main-js）" class="headerlink" title="2、引入（main.js）"></a>2、引入（main.js）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import scroll from &#39;vue-seamless-scroll&#39;</span><br><span class="line">Vue.use(scroll)</span><br></pre></td></tr></table></figure>
+<p>普通引入方法：使用script标签(不推荐)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;vue.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;vue-seamless-scroll&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3、使用-（样式根据需求自行设置即可）"><a href="#3、使用-（样式根据需求自行设置即可）" class="headerlink" title="3、使用 （样式根据需求自行设置即可）"></a>3、使用 （样式根据需求自行设置即可）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;vue-seamless-scroll</span><br><span class="line">            :data&#x3D;&quot;listData&quot;</span><br><span class="line">            :class-option&#x3D;&quot;classOption&quot;</span><br><span class="line">            class&#x3D;&quot;seamless-warp&quot;</span><br><span class="line">          &gt;</span><br><span class="line">            &lt;ul class&#x3D;&quot;item&quot;&gt;</span><br><span class="line">              &lt;li v-for&#x3D;&quot;(item, index) in listData&quot; :key&#x3D;&quot;index&quot;&gt;</span><br><span class="line">                &lt;span class&#x3D;&quot;title&quot; v-text&#x3D;&quot;item.title&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;span class&#x3D;&quot;date&quot; v-text&#x3D;&quot;item.date&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;span class&#x3D;&quot;date&quot; v-text&#x3D;&quot;item.qudao&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">                &lt;span class&#x3D;&quot;date&quot; v-text&#x3D;&quot;item.time&quot;&gt;&lt;&#x2F;span&gt;</span><br><span class="line">              &lt;&#x2F;li&gt;</span><br><span class="line">            &lt;&#x2F;ul&gt;</span><br><span class="line">  &lt;&#x2F;vue-seamless-scroll&gt;</span><br><span class="line">&lt;&#x2F;template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    export default &#123;</span><br><span class="line">        data () &#123;</span><br><span class="line">            return &#123;</span><br><span class="line">                listData: [&#123;</span><br><span class="line">                   &#39;title&#39;: &#39;无缝滚动第一行无缝滚动第一行&#39;,</span><br><span class="line">                   &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                    &#39;title&#39;: &#39;无缝滚动第二行无缝滚动第二行&#39;,</span><br><span class="line">                    &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第三行无缝滚动第三行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第四行无缝滚动第四行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第五行无缝滚动第五行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第六行无缝滚动第六行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第七行无缝滚动第七行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第八行无缝滚动第八行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;, &#123;</span><br><span class="line">                     &#39;title&#39;: &#39;无缝滚动第九行无缝滚动第九行&#39;,</span><br><span class="line">                     &#39;date&#39;: &#39;2017-12-16&#39;</span><br><span class="line">                 &#125;]</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">            &#x2F;&#x2F; 注册 无缝滚动插件</span><br><span class="line">            components: &#123;</span><br><span class="line">                vueSeamlessScroll,</span><br><span class="line">           &#125;,</span><br><span class="line">           &#x2F;&#x2F; 参数配置</span><br><span class="line">            computed: &#123;</span><br><span class="line">                classOption() &#123;</span><br><span class="line">                  return &#123;</span><br><span class="line">                    direction: 0,</span><br><span class="line">                    step: 0.5, &#x2F;&#x2F; 数值越大速度滚动越快</span><br><span class="line">                    waitTime: 1000,</span><br><span class="line">                    &#x2F;&#x2F;     step: 0.2, &#x2F;&#x2F; 数值越大速度滚动越快</span><br><span class="line">                    &#x2F;&#x2F;     limitMoveNum: 2, &#x2F;&#x2F; 开始无缝滚动的数据量 this.dataList.length</span><br><span class="line">                    &#x2F;&#x2F;     hoverStop: true, &#x2F;&#x2F; 是否开启鼠标悬停stop</span><br><span class="line">                    &#x2F;&#x2F;     direction: 0, &#x2F;&#x2F; 0向下 1向上 2向左 3向右</span><br><span class="line">                    &#x2F;&#x2F;     openWatch: true, &#x2F;&#x2F; 开启数据实时监控刷新dom</span><br><span class="line">                    &#x2F;&#x2F;     singleHeight: 0, &#x2F;&#x2F; 单步运动停止的高度(默认值0是无缝不停止的滚动) direction &#x3D;&gt; 0&#x2F;1</span><br><span class="line">                    &#x2F;&#x2F;     singleWidth: 0, &#x2F;&#x2F; 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction &#x3D;&gt; 2&#x2F;3</span><br><span class="line">                    &#x2F;&#x2F;     waitTime: 1000, &#x2F;&#x2F; 单步运动停止的时间(默认值1000ms)</span><br><span class="line">                  &#125;;</span><br><span class="line">                &#125;,</span><br><span class="line">          &#125;,</span><br><span class="line">       &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line"> components: &#123;</span><br><span class="line">    vueSeamlessScroll,</span><br><span class="line">  &#125;,</span><br><span class="line"> computed: &#123;</span><br><span class="line">    classOption() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        direction: 0,</span><br><span class="line">        step: 0.5, &#x2F;&#x2F; 数值越大速度滚动越快</span><br><span class="line">        waitTime: 1000,</span><br><span class="line">        &#x2F;&#x2F;     step: 0.2, &#x2F;&#x2F; 数值越大速度滚动越快</span><br><span class="line">        &#x2F;&#x2F;     limitMoveNum: 2, &#x2F;&#x2F; 开始无缝滚动的数据量 this.dataList.length</span><br><span class="line">        &#x2F;&#x2F;     hoverStop: true, &#x2F;&#x2F; 是否开启鼠标悬停stop</span><br><span class="line">        &#x2F;&#x2F;     direction: 0, &#x2F;&#x2F; 0向下 1向上 2向左 3向右</span><br><span class="line">        &#x2F;&#x2F;     openWatch: true, &#x2F;&#x2F; 开启数据实时监控刷新dom</span><br><span class="line">        &#x2F;&#x2F;     singleHeight: 0, &#x2F;&#x2F; 单步运动停止的高度(默认值0是无缝不停止的滚动) direction &#x3D;&gt; 0&#x2F;1</span><br><span class="line">        &#x2F;&#x2F;     singleWidth: 0, &#x2F;&#x2F; 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction &#x3D;&gt; 2&#x2F;3</span><br><span class="line">        &#x2F;&#x2F;     waitTime: 1000, &#x2F;&#x2F; 单步运动停止的时间(默认值1000ms)</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&lt;style lang&#x3D;&quot;scss&quot; scoped&gt;</span><br><span class="line">    .seamless-warp &#123;</span><br><span class="line">        height: 229px;</span><br><span class="line">        overflow: hidden;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="无缝滚动的参数配置"><a href="#无缝滚动的参数配置" class="headerlink" title="无缝滚动的参数配置"></a>无缝滚动的参数配置</h3><p>​        step: 0.3, //数值越大速度滚动越快<br>​        limitMoveNum: 5, //开始无缝滚动的数据量  //this.fourDatata.length<br>​        hoverStop: true, //是否开启鼠标悬停stop<br>​        direction: 1, // 0向下 1向上 2向左 3向右<br>​        openWatch: true, //开启数据实时监控刷新dom<br>​        singleHeight: 0, //单步运动停止的高度(默认值0是无缝不停止的滚动) direction =&gt; 0/1<br>​        singleWidth: 0, //单步运动停止的宽度(默认值0是无缝不停止的滚动) direction =&gt; 2/3<br>​        waitTime: 1000 //单步运动停止的时间(默认值1000ms) </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-10-element-ui动态更改el-table某个单元格字体颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -241,7 +315,7 @@
       
         <h2 id="npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘"><a href="#npm-run-dev启动报错-“export-‘default‘-imported-as-‘echarts‘-was-not-found-in-‘echarts‘" class="headerlink" title="npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘"></a>npm  run  dev启动报错   “export ‘default‘ (imported as ‘echarts‘) was not found in ‘echarts‘</h2><p>页面新增同事的echart图 ：直接报错”export ‘default’ (imported as ‘echarts’) was not found in ‘echarts’</p>
 <p>在Google 查出来一个问题说可能是版本问题，进行校验后发现确实我的5.0，同事的为4.9</p>
-<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#101;&#x63;&#x68;&#97;&#114;&#116;&#x73;&#64;&#x34;&#46;&#x39;">&#101;&#x63;&#x68;&#97;&#114;&#116;&#x73;&#64;&#x34;&#46;&#x39;</a>，</p>
+<p>最后发现 是版本问题，于是我把我自己的版本降低到了 <a href="mailto:&#101;&#99;&#x68;&#x61;&#x72;&#x74;&#x73;&#x40;&#52;&#46;&#57;">&#101;&#99;&#x68;&#x61;&#x72;&#x74;&#x73;&#x40;&#52;&#46;&#57;</a>，</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install echarts@4.9.0</span><br></pre></td></tr></table></figure>
 <p>一般是版本不兼容的问题</p>
 
@@ -921,128 +995,9 @@ state: &#123;
 
 
   
-    <article id="post-1-hexo-github搭建个人博客教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">1.《hexo+github搭建个人博客教程（@刘桓）》</a>
-    </h1>
-  
-
-        
-        <a href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-02-20T15:04:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言："><a href="#前言：" class="headerlink" title="前言："></a><strong>前言：</strong></h2><h5 id="是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。"><a href="#是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。" class="headerlink" title="是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。"></a>是否也想要搭建一个属于自己的个人网站，如果你曾经或者现在正有这样的想法，请跟随这篇文章发挥你的Geek精神，让你快速拥有自己的博客网站，写文章记录生活，享受这种从0到1的过程。</h5><h2 id="个人博客展示"><a href="#个人博客展示" class="headerlink" title="个人博客展示"></a>个人博客展示</h2><h2 id="我的博客展示"><a href="#我的博客展示" class="headerlink" title="我的博客展示"></a><a target="_blank" rel="noopener" href="https://mymessages.github.io/">我的博客展示</a></h2><hr>
-<h2 id="什么是Hexo"><a href="#什么是Hexo" class="headerlink" title="什么是Hexo ?"></a><strong>什么是Hexo ?</strong></h2><p>Hexo是一款基于Node.js的静态博客框架，依赖少易于安装使用，可以方便的生成静态网页托管在GitHub和Heroku上，是搭建博客的首选框架。</p>
-<h2 id="搭建步骤："><a href="#搭建步骤：" class="headerlink" title="搭建步骤："></a><strong>搭建步骤：</strong></h2><ul>
-<li> GitHub创建个人仓库</li>
-<li>安装Git</li>
-<li>安装Node.js</li>
-<li>安装Hexo</li>
-<li>推送网站</li>
-<li>暂时不绑定域名</li>
-</ul>
-<h2 id="1-GitHub创建个人仓库"><a href="#1-GitHub创建个人仓库" class="headerlink" title="1.GitHub创建个人仓库"></a>1.GitHub创建个人仓库</h2><p>登录到GitHub,如果没有GitHub帐号，点击GitHub中的New repository创建新仓库，仓库名应该为：<strong>用户名</strong>.<a href="https://link.zhihu.com/?target=http://github.io">http://github.io</a> <strong>用户名</strong>.<a href="https://link.zhihu.com/?target=http://github.io">http://github.io</a> 这个<strong>用户名</strong>使用你的GitHub帐号名称代替，这是固定写法，比如我的仓库名为：</p>
-<p><img src="file:///C:/Users/20650/AppData/Local/Microsoft/Windows/Clipboard/HistoryData/%7B7F7E2AA2-56C3-40EB-9198-FD47303A0336%7D/%7B3CE150CB-8D12-4304-A4E8-68F83450474F%7D/ResourceMap/%7BDE38E306-1F9F-410B-9B0B-49FFEB499BCB%7D" alt="img"></p>
-<h2 id="MyMessages-github-io"><a href="#MyMessages-github-io" class="headerlink" title="MyMessages.github.io"></a>MyMessages.github.io</h2><h2 id="2-安装Git"><a href="#2-安装Git" class="headerlink" title="2.安装Git"></a>2.安装Git</h2><p>什么是Git ?简单来说Git是开源的分布式版本控制系统，用于敏捷高效地处理项目。我们网站在本地搭建好了，需要使用Git同步到GitHub上。</p>
-<p>安装成功后，将你的Git与GitHub帐号绑定，鼠标右击打开Git Bash</p>
-<p>或者在菜单里搜索Git Bash，设置user.name和user.email配置信息：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;你的GitHub用户名&quot;</span><br><span class="line">git config --global user.email &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>生成ssh密钥文件：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;你的GitHub注册邮箱&quot;</span><br></pre></td></tr></table></figure>
-<p>打开<a href="https://link.zhihu.com/?target=https://github.com/settings/keys">GitHub_Settings_keys</a> 页面，新建new SSH Key（把公钥添加到github上）</p>
-<p>这里之所以设置GitHub密钥原因是，通过非对称加密的公钥与私钥来完成加密，公钥放置在GitHub上，私钥放置在自己的电脑里。GitHub要求每次推送代码都是合法用户，所以每次推送都需要输入账号密码验证推送用户是否是合法用户，为了省去每次输入密码的步骤，采用了ssh，当你推送的时候，git就会匹配你的私钥跟GitHub上面的公钥是否是配对的，若是匹配就认为你是合法用户，则允许推送。这样可以保证每次的推送都是正确合法的。</p>
-<h2 id="3-安装Node-js"><a href="#3-安装Node-js" class="headerlink" title="3.安装Node.js"></a>3.<strong>安装Node.js</strong></h2><p>exo基于Node.js，Node.js下载地址：<a href="https://link.zhihu.com/?target=https://nodejs.org/en/download/">Download | Node.js</a> 下载安装包，注意安装Node.js会包含环境变量及npm的安装，安装后，检测Node.js是否安装成功，在命令行中输入 node -v :</p>
-<p>检测npm是否安装成功，在命令行中输入npm -v :</p>
-<p>到这了，安装Hexo的环境已经全部搭建完成。</p>
-<h2 id="4-安装Hexo"><a href="#4-安装Hexo" class="headerlink" title="4.安装Hexo"></a>4.<strong>安装Hexo</strong></h2><p>Hexo就是我们的个人博客网站的框架， 这里需要自己在电脑常里创建一个文件夹，可以命名为Blog，Hexo框架与以后你自己发布的网页都在这个文件夹中。创建好后，进入文件夹中，按住shift键，右击鼠标点击命令行</p>
-<p>使用npm命令安装Hexo，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-
-
-<p>安装完成后，初始化我们的博客，输入：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>注意：这里的  blog 始自己随便取的</p>
-<p>为了检测我们的网站雏形，分别按顺序输入以下三条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new test_my_site</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-
-
-<p>这些命令在后面作介绍，完成后，打开浏览器输入地址：</p>
-<p>localhost:4000</p>
-<p>之后就可以看到 自己搭建的 名称为 test_my_site 的 本地博客</p>
-<h2 id="常用的Hexo-命令"><a href="#常用的Hexo-命令" class="headerlink" title="常用的Hexo 命令"></a>常用的Hexo 命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm  install hexo -g   &#x2F;&#x2F; 安装Hexo</span><br><span class="line"></span><br><span class="line">npm  update hexo -g     &#x2F;&#x2F; 升级</span><br><span class="line"></span><br><span class="line">hexo init    &#x2F;&#x2F; 初始化博客</span><br></pre></td></tr></table></figure>
-<p>简写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo n &quot;我的博客&quot; &#x3D;&#x3D; hexo new &quot;我的博客&quot; #新建文章</span><br><span class="line"></span><br><span class="line">hexo g &#x3D;&#x3D; hexo generate #生成</span><br><span class="line"></span><br><span class="line">hexo s &#x3D;&#x3D; hexo server #启动服务预览</span><br><span class="line"></span><br><span class="line">hexo d &#x3D;&#x3D; hexo deploy #部署到github上</span><br></pre></td></tr></table></figure>
-<p>其他命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">hexo server     #Hexo会监视文件变动并自动更新，无须重启服务器</span><br><span class="line"></span><br><span class="line">hexo server -s      #静态模式</span><br><span class="line"></span><br><span class="line">hexo server -p 5000       #更改端口</span><br><span class="line"></span><br><span class="line">hexo server -i 192.168.1.1       #自定义 IP</span><br><span class="line"></span><br><span class="line">hexo clean      #清除缓存，若是网页正常情况下可以忽略这条命令</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="5-推送网站"><a href="#5-推送网站" class="headerlink" title="5.推送网站"></a>5.<strong>推送网站</strong></h2><p>上面只是在本地预览，接下来要做的就是就是推送网站，也就是发布网站，让我们的网站可以被更多的人访问。在设置之前，需要解释一个概念，在blog根目录里的_config.yml文件称为<strong>站点</strong>配置文件，</p>
-<p>下一步将我们的Hexo与GitHub关联起来，打开站点的配置文件_config.yml，翻到最后修改为：</p>
-<p>deploy:<br>type: git<br>repo: 这里填入你之前在GitHub上创建仓库的完整路径，记得加上 .git<br>branch: master</p>
-<p>参考如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: https:&#x2F;&#x2F;github.com&#x2F;MyMessages&#x2F;MyMessages.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>保存站点配置文件</p>
-<p>其实就是给hexo d 这个命令做相应的配置，让hexo知道你要把blog部署在哪个位置，很显然，我们部署在我们GitHub的仓库里。最后安装Git部署插件，输入命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>这时，我们分别输入三条命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo clean </span><br><span class="line">hexo g </span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>其实第三条的 hexo d 就是部署网站命令，d是deploy的缩写。完成后，打开浏览器，在地址栏输入你的放置个人网站的仓库路径，即 <a href="https://link.zhihu.com/?target=http://xxxx.github.io">http://xxxx.github.io</a> </p>
-<h2 id="绑定域名"><a href="#绑定域名" class="headerlink" title="绑定域名"></a><strong>绑定域名</strong></h2><p>———–暂时先不绑定—————</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/02/20/1-hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 

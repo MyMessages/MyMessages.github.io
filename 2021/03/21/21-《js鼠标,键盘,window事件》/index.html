@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2021 | 刘桓的个人GitHub博客</title>
+  <title>20.《js鼠标,键盘,window事件》 | 刘桓的个人GitHub博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="刘桓的个人GitHub博客">
-<meta property="og:url" content="http://example.com/archives/2021/index.html">
+  <meta name="description" content="绑定事件格式：    元素节点.on + 事件类型 &#x3D; 匿名函数 ​    click  事件类型 ​    onclick  事件处理函数    鼠标事件​        dbclick  鼠标双击 ​        mouseover 鼠标移入(移入到元素内的子元素 子元素会进行触发)  ​        mouseout  鼠标移除出(移出到元素内的子元素，子元素会进行触发) ​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20.《js鼠标,键盘,window事件》">
+<meta property="og:url" content="http://example.com/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/index.html">
 <meta property="og:site_name" content="刘桓的个人GitHub博客">
+<meta property="og:description" content="绑定事件格式：    元素节点.on + 事件类型 &#x3D; 匿名函数 ​    click  事件类型 ​    onclick  事件处理函数    鼠标事件​        dbclick  鼠标双击 ​        mouseover 鼠标移入(移入到元素内的子元素 子元素会进行触发)  ​        mouseout  鼠标移除出(移出到元素内的子元素，子元素会进行触发) ​">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-21T10:27:15.000Z">
+<meta property="article:modified_time" content="2021-03-25T06:21:32.051Z">
 <meta property="article:author" content="Liu_Huan">
 <meta name="twitter:card" content="summary">
   
@@ -150,295 +154,184 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-21-《js鼠标,键盘,window事件》" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      20.《js鼠标,键盘,window事件》
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/" class="archive-article-date">
+
+        
+        <a href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/" class="archive-article-date">
   	<time datetime="2021-03-21T10:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/">20.《js鼠标,键盘,window事件》</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p> 绑定事件格式：</p>
+<p>   元素节点.on + 事件类型 = 匿名函数</p>
+<p>​    click  事件类型</p>
+<p>​    onclick  事件处理函数   </p>
+<h2 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h2><p>​        dbclick  鼠标双击</p>
+<p>​        mouseover 鼠标移入(移入到元素内的子元素 子元素会进行触发) </p>
+<p>​        mouseout  鼠标移除出(移出到元素内的子元素，子元素会进行触发)</p>
+<p>​        mousemove 鼠标在元素中移动</p>
+<p>​        mouseenter 鼠标移入(移入到元素内的子元素 子元素不会进行触发)</p>
+<p>​        mouseleave 鼠标移出(移出到元素内的子元素，子元素不会进行触发) </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">  </span><br><span class="line">        div&#123;</span><br><span class="line">            width: 200px;</span><br><span class="line">            height: 200px;</span><br><span class="line">            background-color: yellow;</span><br><span class="line">        &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;* </span><br><span class="line">            鼠标事件</span><br><span class="line">                dbclick    鼠标双击</span><br><span class="line">                mouseover  鼠标移入(移入到元素内的子元素 子元素会进行触发) </span><br><span class="line">                mouseout   鼠标移除出(移出到元素内的子元素，子元素会进行触发)</span><br><span class="line">                mousemove  鼠标在元素中移动</span><br><span class="line">                mouseenter 鼠标移入(移入到元素内的子元素 子元素不会进行触发)</span><br><span class="line">                mouseleave 鼠标移出(移出到元素内的子元素，子元素不会进行触发)  </span><br><span class="line">            </span><br><span class="line">          *&#x2F;</span><br><span class="line">        var  odiv &#x3D; document.getElementsByTagName(&quot;div&quot;)[0]</span><br><span class="line">        &#x2F;&#x2F; 双击</span><br><span class="line">        odiv.ondblclick &#x3D; function ()&#123;</span><br><span class="line">            alert(&quot;双击了&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 鼠标移入</span><br><span class="line">        odiv.onmouseover &#x3D; function()&#123;</span><br><span class="line">            odiv.style.backgroundColor &#x3D; &quot;red&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 鼠标移出</span><br><span class="line">        odiv.onmouseout &#x3D; function()&#123;</span><br><span class="line">            odiv.style.backgroundColor &#x3D; &quot;green&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 鼠标按下</span><br><span class="line">        odiv.onmousedown &#x3D; function ()&#123;</span><br><span class="line">            odiv.style.backgroundColor &#x3D; &#39;blue&#39;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 鼠标抬起</span><br><span class="line">        odiv.onmouseup &#x3D; function ()&#123;</span><br><span class="line">            odiv.style.backgroundColor &#x3D; &quot;#333&quot;</span><br><span class="line">        &#125; </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="鼠标事件属性"><a href="#鼠标事件属性" class="headerlink" title="鼠标事件属性"></a>鼠标事件属性</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt; </span><br><span class="line">&lt;body&gt; </span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;默认文本&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;*  </span><br><span class="line">           鼠标事件对象属性</span><br><span class="line">             1 左键</span><br><span class="line">             2 滚轮</span><br><span class="line">             3 右键</span><br><span class="line"></span><br><span class="line">            获取当前鼠标位置</span><br><span class="line">              clientX  clientY 原点位置： 可视窗口的左上角为原点位置</span><br><span class="line">              pageX  pageY     原点位置： 每个页面的左上角（包含滚动出去的滚动距离）</span><br><span class="line">              screenX screenY  原点位置： 电脑屏幕的左上角 </span><br><span class="line">        *&#x2F;</span><br><span class="line">         </span><br><span class="line">        document.onmousedown &#x3D; function(ev)&#123;</span><br><span class="line">            &#x2F;&#x2F; 兼容写法 </span><br><span class="line">            var e &#x3D; ev || window.event</span><br><span class="line">            console.log(ev);</span><br><span class="line">            alert(e.clientX + &quot;&quot; + e.clientY)</span><br><span class="line">            alert(e.screenX + &quot;&quot; + e.screenY)</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
-        <div class="article-info info-on-right">
-          
-          
 
+<h2 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h2><p>​        keydown  键盘按下（如果按下不放手,会一直触发）</p>
+<p>​        keyup   键盘抬起</p>
+<p>​        keypress  键盘按下（支支持字符键）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt; </span><br><span class="line">&lt;body style&#x3D;&quot;height: 2000px;&quot;&gt;</span><br><span class="line">    &lt;div&gt;&lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;*  </span><br><span class="line">            键盘事件</span><br><span class="line">                keydown   键盘按下（如果按下不放手,会一直触发）</span><br><span class="line">                keyup      键盘抬起</span><br><span class="line">                keypress   键盘按下（支支持字符键）  </span><br><span class="line">          *&#x2F; </span><br><span class="line">         </span><br><span class="line">        var i &#x3D; 0</span><br><span class="line">        &#x2F;&#x2F; 键盘按下（如果按下不放手,会一直触发）</span><br><span class="line">        window.onkeydown &#x3D; function ()&#123; </span><br><span class="line">            document.title &#x3D; i++</span><br><span class="line">        &#125; </span><br><span class="line">        &#x2F;&#x2F;  keyup      键盘抬起</span><br><span class="line">        window.onkeyup &#x3D; function ()&#123; </span><br><span class="line">            document.title &#x3D; i + &quot;缩放&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F;  keypress   键盘按下（支支持字符键）  </span><br><span class="line">        window.onkeypress &#x3D; function ()&#123; </span><br><span class="line">            document.title &#x3D; i + &quot;缩放&quot;</span><br><span class="line">        &#125; </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="widow-事件"><a href="#widow-事件" class="headerlink" title="widow 事件"></a>widow 事件</h2><p>​          load  页面加载完成后 触发</p>
+<p>​          unload 当页面解构时触发（页面刷新 关闭当前页面） IE浏览器 才兼容</p>
+<p>​          scroll 页面滚动时 触发</p>
+<p>​          resize 窗口大小发生滚动时 触发 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;style&gt; </span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">    &#x2F;&#x2F; 页面加载完成后 再触发 onload 事件</span><br><span class="line">    window.onload &#x3D; function()&#123;</span><br><span class="line">        alert(2)</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;script&gt;</span><br><span class="line">&lt;body style&#x3D;&quot;height: 2000px;&quot;&gt; </span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;*  </span><br><span class="line">            widow 事件</span><br><span class="line">                load   页面加载完成后 触发</span><br><span class="line">                unload  当页面解构时触发（页面刷新 关闭当前页面） IE浏览器 才兼容</span><br><span class="line">                scroll  页面滚动时 触发</span><br><span class="line">                resize  窗口大小发生滚动时 触发  </span><br><span class="line">        *&#x2F; </span><br><span class="line">         &#x2F;&#x2F; 1. load 事件 先触发 alert(1)</span><br><span class="line">          alert(1)</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  2. scroll 页面滚动时 触发</span><br><span class="line">        var i &#x3D; 0</span><br><span class="line">        window.onscroll &#x3D; function ()&#123; </span><br><span class="line">            document.title &#x3D; i++</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; 3.窗口大小发生 缩放 触发</span><br><span class="line">        window.onresize &#x3D; function ()&#123; </span><br><span class="line">            document.title &#x3D; i + &quot;缩放&quot;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h2><p>​         blur  失去焦点</p>
+<p>​         focue 获取焦点</p>
+<p>​         select 选中文本后触发</p>
+<p>​         change 修改文本框内容后触发（修改后失去焦点触发）</p>
+<p>​         sumit  支只对form表单有用 </p>
+<p>​         reset  支只对form表单有用 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt; </span><br><span class="line">&lt;body&gt; </span><br><span class="line">    &lt;input type&#x3D;&quot;text&quot; value&#x3D;&quot;默认文本&quot;&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;*  </span><br><span class="line">             表单事件</span><br><span class="line">                 blur   失去焦点</span><br><span class="line">                 focue  获取焦点</span><br><span class="line">                 select  选中文本后触发</span><br><span class="line">                 change  修改文本框内容后触发（修改后失去焦点触发）</span><br><span class="line">                 sumit   支只对form表单有用 </span><br><span class="line">                 reset   支只对form表单有用 </span><br><span class="line">          *&#x2F;</span><br><span class="line">         var inp &#x3D; document.getElementsByTagName(&quot;input&quot;)[0]</span><br><span class="line">        &#x2F;&#x2F;  失去焦点</span><br><span class="line">        &#x2F;&#x2F;  inp.onblur &#x3D; function ()&#123;</span><br><span class="line">        &#x2F;&#x2F;      this.value &#x3D; &quot;失去焦点&quot;</span><br><span class="line">        &#x2F;&#x2F;  &#125;</span><br><span class="line">        &#x2F;&#x2F; &#x2F;&#x2F;  获得焦点</span><br><span class="line">        &#x2F;&#x2F; inp.onfocus &#x3D; function ()&#123;</span><br><span class="line">        &#x2F;&#x2F;     this.value &#x3D; &quot;得到焦点&quot;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line"></span><br><span class="line">        inp.onchange &#x3D; function ()&#123;</span><br><span class="line">            alert(&quot;被修改了&quot;)</span><br><span class="line">        &#125;</span><br><span class="line">         </span><br><span class="line">         </span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/19/19-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-19T15:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/19/19-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E3%80%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">19.《js之操作节点及练习》</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/19/19-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E3%80%8B/">19.《js之操作节点及练习》</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/19/20-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8F%8A%E7%BB%83%E4%B9%A0%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-19T15:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/19/20-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8F%8A%E7%BB%83%E4%B9%A0%E3%80%8B/">20.《js之操作节点及练习》</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/18-%E3%80%8A%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%BB%83%E4%B9%A0%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-12T09:12:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/18-%E3%80%8A%E9%80%92%E5%BD%92%E6%80%BB%E7%BB%93%E4%BB%A5%E5%8F%8A%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97%E7%BB%83%E4%B9%A0%E3%80%8B/">18.《递归总结以及斐波那契数列练习》</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/17-%E3%80%8Ajs%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-12T08:26:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/17-%E3%80%8Ajs%E4%B8%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F%E3%80%8B/">17.《js中函数的作用域》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/09/16.element-ui%E4%B8%A4%E7%A7%8D%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4%E6%96%B9%E6%B3%95%E7%9A%84%E5%B0%81%E8%A3%85%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-09T11:54:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/09/16.element-ui%E4%B8%A4%E7%A7%8D%E6%A0%BC%E5%BC%8F%E5%8C%96%E6%97%B6%E9%97%B4%E6%96%B9%E6%B3%95%E7%9A%84%E5%B0%81%E8%A3%85%E3%80%8B/">16.《element-ui两种格式化时间方法的封装》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/07/15-css3%20%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8-%E8%AF%A6%E7%BB%86%E7%AF%87/" class="archive-article-date">
-  	<time datetime="2021-03-07T13:39:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/07/15-css3%20%E6%96%B0%E5%A2%9E%E9%80%89%E6%8B%A9%E5%99%A8-%E8%AF%A6%E7%BB%86%E7%AF%87/">15.css3 新增选择器-详细篇</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/07/14-%E5%8D%95%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-03-07T08:32:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/07/14-%E5%8D%95%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%BA%A2%E5%87%BA%E5%A4%84%E7%90%86/">14.《单多行文本溢出处理》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-13">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-03-07T06:58:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/07/13.this-router-push-%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/">13.《this.$router.push()参数详解》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-07T06:39:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/07/12-%E3%80%8A%E5%85%B3%E4%BA%8EElementUI%E4%B8%ADconfirm%E7%A1%AE%E8%AE%A4%E5%BC%B9%E7%AA%97%E7%9A%84%E5%B0%81%E8%A3%85%E6%95%B4%E7%90%86%E3%80%8B/">12.《关于ElementUI中confirm确认弹窗的封装整理》</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2021/page/2/">2</a><a class="page-number" href="/archives/2021/page/3/">3</a><a class="extend next" rel="next" href="/archives/2021/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +355,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
