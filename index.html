@@ -152,70 +152,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-22-《函数内部的this》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/">22.《函数内部的this》</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-21T10:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="this详解"><a href="#this详解" class="headerlink" title="this详解"></a>this详解</h1><p>this概念：只要是函数，内部都会有 this 的变量 this 存储的是地址，是当前函数的地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;button&gt;按钮一&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮二&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮三&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btns &#x3D; document.getElementsByTagName(&quot;button&quot;)</span><br><span class="line">        for (var i &#x3D; 0; i &lt; btns.length; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 自定义属性</span><br><span class="line">            btns[i].index &#x3D; i</span><br><span class="line">            btns[i].onclick &#x3D; function () &#123;</span><br><span class="line">                alert(this.index)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  1. </span><br><span class="line">        var obj &#x3D; &#123;</span><br><span class="line">            name: &quot;张三&quot;,</span><br><span class="line">            age: 18,</span><br><span class="line">            show: function () &#123;</span><br><span class="line">                console.log(this);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; obj.show()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  2.</span><br><span class="line">        function show1() &#123;</span><br><span class="line">            alert(this)</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; show1()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 3.</span><br><span class="line">        &#x2F;&#x2F; btns[0].onclick &#x3D; function () &#123;</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; function show3() &#123;</span><br><span class="line">        &#x2F;&#x2F;         console.log(this);</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; &#125;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-21-《js鼠标,键盘,window事件》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -279,6 +215,70 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-22-《函数内部的this》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/">22.《函数内部的this》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-21T10:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="this详解"><a href="#this详解" class="headerlink" title="this详解"></a>this详解</h1><p>this概念：只要是函数，内部都会有 this 的变量 this 存储的是地址，是当前函数的地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;button&gt;按钮一&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮二&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮三&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btns &#x3D; document.getElementsByTagName(&quot;button&quot;)</span><br><span class="line">        for (var i &#x3D; 0; i &lt; btns.length; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 自定义属性</span><br><span class="line">            btns[i].index &#x3D; i</span><br><span class="line">            btns[i].onclick &#x3D; function () &#123;</span><br><span class="line">                alert(this.index)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  1. </span><br><span class="line">        var obj &#x3D; &#123;</span><br><span class="line">            name: &quot;张三&quot;,</span><br><span class="line">            age: 18,</span><br><span class="line">            show: function () &#123;</span><br><span class="line">                console.log(this);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; obj.show()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  2.</span><br><span class="line">        function show1() &#123;</span><br><span class="line">            alert(this)</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; show1()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 3.</span><br><span class="line">        &#x2F;&#x2F; btns[0].onclick &#x3D; function () &#123;</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; function show3() &#123;</span><br><span class="line">        &#x2F;&#x2F;         console.log(this);</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; &#125;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/">展开全文 >></a>
         </p>
       
 
