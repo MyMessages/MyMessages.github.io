@@ -152,6 +152,75 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2-vue中productionSourceMap属性详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">2.《vue中productionSourceMap属性详解》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2021-03-02T14:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="vue-设置-productionSourceMap"><a href="#vue-设置-productionSourceMap" class="headerlink" title="vue 设置 productionSourceMap"></a>vue 设置 productionSourceMap</h1><p><strong>Vue打包后出现一些map文件的解决办法：</strong></p>
+<p>问题： <strong>可能很多人在做vue项目打包，打包之后js中，会自动生成一些map文件，那我们怎么把它去掉不要呢？</strong></p>
+<p>1，运行 cnpm run build 开始打包</p>
+<p>2，会在项目目录下自动创建dist目录，打包好的文件都在其中</p>
+<p>解决办法：去src/config/index.js中改一个参数：</p>
+<h3 id="productionSourceMap-false"><a href="#productionSourceMap-false" class="headerlink" title="productionSourceMap:false"></a>productionSourceMap:false</h3><p>把这个改为false。不然在最终打包的文件中会出现一些map文件，map文件的作用在于：项目打包后，代码都是经过压缩加密的，如果运行时报错，输出的错误信息无法准确得知是哪里的代码报错。</p>
+<p>有了map就可以像未加密的代码一样，准确的输出是哪一行哪一列有错。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/02/2-vue%E4%B8%ADproductionSourceMap%E5%B1%9E%E6%80%A7%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-1-hexo-github搭建个人博客教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
