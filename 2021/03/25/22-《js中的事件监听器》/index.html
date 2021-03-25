@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>22.《函数内部的this》 | 刘桓的个人GitHub博客</title>
+  <title>22.《js中的事件监听器》 | 刘桓的个人GitHub博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="this详解this概念：只要是函数，内部都会有 this 的变量 this 存储的是地址，是当前函数的地址 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&amp;q">
+  <meta name="description" content="1.传统事件绑定 重复添加相同事件会进行覆盖  不能精确的删除事件上的某一个函数 123456789101112131415161718192021222324&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="22.《函数内部的this》">
-<meta property="og:url" content="http://example.com/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/index.html">
+<meta property="og:title" content="22.《js中的事件监听器》">
+<meta property="og:url" content="http://example.com/2021/03/25/22-%E3%80%8Ajs%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%8B/index.html">
 <meta property="og:site_name" content="刘桓的个人GitHub博客">
-<meta property="og:description" content="this详解this概念：只要是函数，内部都会有 this 的变量 this 存储的是地址，是当前函数的地址 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&amp;q">
+<meta property="og:description" content="1.传统事件绑定 重复添加相同事件会进行覆盖  不能精确的删除事件上的某一个函数 123456789101112131415161718192021222324&lt;!DOCTYPE html&gt;&lt;html lang&#x3D;&quot;en&quot;&gt;&lt;head&gt;    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-21T10:27:15.000Z">
-<meta property="article:modified_time" content="2021-03-25T06:22:50.945Z">
+<meta property="article:published_time" content="2021-03-25T11:52:32.000Z">
+<meta property="article:modified_time" content="2021-03-25T12:16:33.040Z">
 <meta property="article:author" content="Liu_Huan">
 <meta name="twitter:card" content="summary">
   
@@ -154,28 +154,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-22-《函数内部的this》" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-22-《js中的事件监听器》" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      22.《函数内部的this》
+      22.《js中的事件监听器》
     </h1>
   
 
         
-        <a href="/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/" class="archive-article-date">
-  	<time datetime="2021-03-21T10:27:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-21</time>
+        <a href="/2021/03/25/22-%E3%80%8Ajs%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-25T11:52:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="this详解"><a href="#this详解" class="headerlink" title="this详解"></a>this详解</h1><p>this概念：只要是函数，内部都会有 this 的变量 this 存储的是地址，是当前函数的地址</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;button&gt;按钮一&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮二&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;按钮三&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btns &#x3D; document.getElementsByTagName(&quot;button&quot;)</span><br><span class="line">        for (var i &#x3D; 0; i &lt; btns.length; i++) &#123;</span><br><span class="line">            &#x2F;&#x2F; 自定义属性</span><br><span class="line">            btns[i].index &#x3D; i</span><br><span class="line">            btns[i].onclick &#x3D; function () &#123;</span><br><span class="line">                alert(this.index)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  1. </span><br><span class="line">        var obj &#x3D; &#123;</span><br><span class="line">            name: &quot;张三&quot;,</span><br><span class="line">            age: 18,</span><br><span class="line">            show: function () &#123;</span><br><span class="line">                console.log(this);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; obj.show()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F;  2.</span><br><span class="line">        function show1() &#123;</span><br><span class="line">            alert(this)</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; show1()</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 3.</span><br><span class="line">        &#x2F;&#x2F; btns[0].onclick &#x3D; function () &#123;</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; function show3() &#123;</span><br><span class="line">        &#x2F;&#x2F;         console.log(this);</span><br><span class="line">        &#x2F;&#x2F;     &#x2F;&#x2F; &#125;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+        <h2 id="1-传统事件绑定"><a href="#1-传统事件绑定" class="headerlink" title="1.传统事件绑定"></a>1.传统事件绑定</h2><ul>
+<li><p>重复添加相同事件会进行覆盖</p>
+</li>
+<li><p>不能精确的删除事件上的某一个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;., initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;点我&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btn &#x3D; document.querySelector(&quot;button&quot;)</span><br><span class="line">        btn.onclick &#x3D; function ()&#123;</span><br><span class="line">            alert(1)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        btn.onclick &#x3D; function ()&#123;</span><br><span class="line">            alert(2)</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+<h2 id="2-事件监听器"><a href="#2-事件监听器" class="headerlink" title="2.事件监听器"></a>2.事件监听器</h2><p>​      事件监听</p>
+<p>​        格式: node.addEventLister()</p>
+<p>​        参数： </p>
+<p>​          第一个参数 事件类型(click)</p>
+<p>​          第二个参数 绑定函数</p>
+<p>​          第三个参数 布尔值  true 时捕获 false事件冒泡 默认</p>
+<p>​      removeEventListener()</p>
+<p>​        格式：node.removeEventListener()</p>
+<p>​        参数：</p>
+<p>​          第一个参数 事件类型</p>
+<p>​          第二个参数 删除函数名字</p>
+<p> <strong>案例一</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 事件监听器</span><br><span class="line">       var obtn &#x3D; document.getElementsByTagName(&quot;button&quot;)[1]</span><br><span class="line">       obtn.addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">           alert(&quot;占山1&quot;)</span><br><span class="line">       &#125;,false)</span><br><span class="line"></span><br><span class="line">       obtn.addEventListener(&quot;click&quot;,function()&#123;</span><br><span class="line">           alert(&quot;占山2&quot;)</span><br><span class="line">       &#125;,false)</span><br></pre></td></tr></table></figure>
+<p><strong>案例二</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;button&gt;新增函数&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button&gt;原本&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;button&gt;移除函数&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var  btn &#x3D; document.getElementsByTagName(&quot;button&quot;)</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 新增函数</span><br><span class="line">         btn[0].onclick &#x3D; function()&#123;</span><br><span class="line">             btn[1].addEventListener(&quot;click&quot;,show,false)</span><br><span class="line">         &#125; </span><br><span class="line">         </span><br><span class="line">         btn[1].onclick &#x3D; function()&#123;</span><br><span class="line">            alert(&quot;原有函数&quot;) </span><br><span class="line">         &#125;  </span><br><span class="line"></span><br><span class="line">         btn[2].onclick &#x3D; function()&#123;</span><br><span class="line">            btn[1].removeEventListener(&quot;click&quot;,show)</span><br><span class="line">         &#125;</span><br><span class="line">        </span><br><span class="line"> </span><br><span class="line">         function show()&#123;</span><br><span class="line">             alert(&quot;helo world&quot;)</span><br><span class="line">         &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -255,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/21/22-%E3%80%8A%E5%87%BD%E6%95%B0%E5%86%85%E9%83%A8%E7%9A%84this%E3%80%8B/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/03/25/22-%E3%80%8Ajs%E4%B8%AD%E7%9A%84%E4%BA%8B%E4%BB%B6%E7%9B%91%E5%90%AC%E5%99%A8%E3%80%8B/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -269,18 +293,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/03/25/23-%E3%80%8A%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E3%80%8B/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          21.《js鼠标,键盘,window事件》
+          23.《正则表达式》
         
       </div>
     </a>
   
   
-    <a href="/2021/03/19/19-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E3%80%8B/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">19.《js之操作节点及练习》</div>
+    <a href="/2021/03/21/21-%E3%80%8Ajs%E9%BC%A0%E6%A0%87,%E9%94%AE%E7%9B%98,window%E4%BA%8B%E4%BB%B6%E3%80%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">21.《js鼠标,键盘,window事件》</div>
       <i class="icon-circle-right"></i>
     </a>
   
