@@ -232,6 +232,86 @@
 
 
   
+    <article id="post-20-《js之操作节点及练习》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/03/19/20-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8F%8A%E7%BB%83%E4%B9%A0%E3%80%8B/">20.《js之操作节点及练习》</a>
+    </h1>
+  
+
+        
+        <a href="/2021/03/19/20-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8F%8A%E7%BB%83%E4%B9%A0%E3%80%8B/" class="archive-article-date">
+  	<time datetime="2021-03-19T15:10:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>createElement<pre><code>      创建元素
+      格式： document.createElement(&quot;标签名&quot;)
+      参数： 标签名
+      返回值： 创建的这个节点 
+</code></pre>
+</li>
+</ol>
+<p>2.appendChild<br>    格式：node1.appendChild(node2)<br>    功能：将node2插入到node1的末尾</p>
+<p>3.createTextNode()<br>   格式：document.createTextNode(“”)</p>
+<p>4.insertBerfore()<br>  格式: document.body.insertBefore(box2,box1)<br>  功能：将box2添加到 box1 的前面</p>
+<p>5.replaceChild 替换节点  </p>
+<p> 格式 document.body.replaceChild(box1,box2)<br>   参数：box2 替换 box1</p>
+<p>6.cloneNode 节点克隆<br>    格式： node1.cloneNode(true)   true克隆几点以及内容<br>    参数： 克隆节点 node1  </p>
+<h2 id="代码案例"><a href="#代码案例" class="headerlink" title="代码案例"></a>代码案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    body &#123;</span><br><span class="line">        background-color: pink;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;em&gt;你好，我是em&lt;&#x2F;em&gt;</span><br><span class="line">        div文本</span><br><span class="line">        &lt;strong&gt;你好，世界&lt;&#x2F;strong&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;button onclick&#x3D;&quot;add&quot;&gt;添加元素&lt;&#x2F;button&gt;</span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        &#x2F;*</span><br><span class="line">            1. createElement</span><br><span class="line">              创建元素</span><br><span class="line">              格式： document.createElement(&quot;标签名&quot;)</span><br><span class="line">              参数： 标签名</span><br><span class="line">              返回值： 创建的这个节点</span><br><span class="line">            </span><br><span class="line">            2. appendChild</span><br><span class="line">               格式：node1.appendChild(node2)</span><br><span class="line">               功能：将node2插入到node1的末尾</span><br><span class="line">            </span><br><span class="line">            3. createTextNode() </span><br><span class="line">                格式：document.createTextNode(&quot;&quot;)</span><br><span class="line"></span><br><span class="line">            4. insertBerfore()</span><br><span class="line">               格式: document.body.insertBefore(box2,box1)</span><br><span class="line">               功能：将box2添加到 box1 的前面</span><br><span class="line"></span><br><span class="line">            5. replaceChild 替换节点</span><br><span class="line">                格式 document.body.replaceChild(box1,box2)</span><br><span class="line">                参数：box2 替换 box1</span><br><span class="line"></span><br><span class="line">            6. cloneNode 节点克隆</span><br><span class="line">                格式： node1.cloneNode(true)   true克隆几点以及内容 </span><br><span class="line">                参数： 克隆节点 node1   </span><br><span class="line"></span><br><span class="line">        *&#x2F;</span><br><span class="line">        var wrap &#x3D; document.getElementsByClassName(&quot;wrap&quot;)[0]</span><br><span class="line">        &#x2F;&#x2F; 创建元素    </span><br><span class="line">        var newdiv &#x3D; document.createElement(&quot;p&quot;)</span><br><span class="line">        &#x2F;&#x2F;  创建文本内容</span><br><span class="line">        var textContent &#x3D; document.createTextNode(&quot;你好，世界&quot;) </span><br><span class="line">        newdiv.appendChild(textContent)</span><br><span class="line">        </span><br><span class="line">        var btn &#x3D; document.getElementsByTagName(&quot;button&quot;)[0]</span><br><span class="line">        &#x2F;&#x2F; 追加</span><br><span class="line">        btn.onclick &#x3D; function () &#123;</span><br><span class="line">            &#x2F;&#x2F; 在wrap 末尾 添加 元素</span><br><span class="line">            &#x2F;&#x2F; wrap.appendChild(newdiv)</span><br><span class="line">            &#x2F;&#x2F; 在 wrap 之前 添加 一个新元素</span><br><span class="line">            &#x2F;&#x2F; document.body.insertBefore(newdiv,wrap)</span><br><span class="line">            &#x2F;&#x2F; 替换节点</span><br><span class="line">            &#x2F;&#x2F; document.body.replaceChild(newdiv,wrap)</span><br><span class="line">            &#x2F;&#x2F; 克隆节点</span><br><span class="line">            var cloneN &#x3D;  wrap.cloneNode(true)</span><br><span class="line">            document.body.appendChild(cloneN)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="练习案例"><a href="#练习案例" class="headerlink" title="练习案例"></a>练习案例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang&#x3D;&quot;en&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;meta http-equiv&#x3D;&quot;X-UA-Compatible&quot; content&#x3D;&quot;IE&#x3D;edge&quot;&gt;</span><br><span class="line">    &lt;meta name&#x3D;&quot;viewport&quot; content&#x3D;&quot;width&#x3D;device-width, initial-scale&#x3D;1.0&quot;&gt;</span><br><span class="line">    &lt;title&gt;Document&lt;&#x2F;title&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">    .wrap &#123;</span><br><span class="line">        background-color: antiquewhite;</span><br><span class="line">        height: 500px;</span><br><span class="line">        width: 300px;</span><br><span class="line">        border: 5px solid #ccc;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    button &#123;</span><br><span class="line">        width: 80px;</span><br><span class="line">        height: 30px;</span><br><span class="line">        background-color: black;</span><br><span class="line">        color: #fff;</span><br><span class="line">        margin: 7px;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    input &#123;</span><br><span class="line">        width: 100%;</span><br><span class="line">    &#125; </span><br><span class="line">    .odiv div &#123;</span><br><span class="line">        height: 30px;</span><br><span class="line">        border: 1px solid green;</span><br><span class="line">        margin-bottom: 10px;</span><br><span class="line">        background-color: yellow;</span><br><span class="line">    &#125;</span><br><span class="line">&lt;&#x2F;style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;div class&#x3D;&quot;wrap&quot;&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot;&gt;</span><br><span class="line">        &lt;button&gt;增加&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;删除&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;button&gt;拷贝&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;div class&#x3D;&quot;odiv&quot;&gt;</span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    &lt;&#x2F;div&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;script&gt;</span><br><span class="line">        var btn &#x3D; document.getElementsByTagName(&quot;button&quot;)</span><br><span class="line">        var input &#x3D; document.getElementsByTagName(&quot;input&quot;)[0]</span><br><span class="line">        var divs &#x3D; document.getElementsByClassName(&quot;odiv&quot;)[0]</span><br><span class="line">        btn[0].onclick &#x3D; function () &#123;</span><br><span class="line">            if (input.value) &#123;</span><br><span class="line">                var odiv &#x3D; document.createElement(&quot;div&quot;)</span><br><span class="line">                var text &#x3D; document.createTextNode(input.value)</span><br><span class="line">                odiv.appendChild(text)</span><br><span class="line">                divs.appendChild(odiv)</span><br><span class="line">                input.value &#x3D; &#39;&#39;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                alert(&quot;不能为空&quot;)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        btn[1].onclick &#x3D; function () &#123;</span><br><span class="line">            divs.removeChild(divs.lastChild)</span><br><span class="line">        &#125;</span><br><span class="line">        btn[2].onclick &#x3D; function () &#123;</span><br><span class="line">            var news &#x3D; divs.lastChild.cloneNode(true);</span><br><span class="line">            divs.appendChild(news)</span><br><span class="line">        &#125;</span><br><span class="line">    &lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/03/19/20-%E3%80%8Ajs%E4%B9%8B%E6%93%8D%E4%BD%9C%E8%8A%82%E7%82%B9%E5%8F%8A%E7%BB%83%E4%B9%A0%E3%80%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-18-《递归总结以及斐波那契数列练习》" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -915,73 +995,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/03/07/11.vue-seamless-scroll%E6%97%A0%E7%BC%9D%E6%BB%9A%E5%8A%A8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-10-element-ui动态更改el-table某个单元格字体颜色" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/03/07/10-element-ui%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9el-table%E6%9F%90%E4%B8%AA%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2/">10.《element-ui动态更改el-table某个单元格字体颜色》</a>
-    </h1>
-  
-
-        
-        <a href="/2021/03/07/10-element-ui%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9el-table%E6%9F%90%E4%B8%AA%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2/" class="archive-article-date">
-  	<time datetime="2021-03-07T04:53:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="element-ui动态更改el-table某个单元格字体颜色"><a href="#element-ui动态更改el-table某个单元格字体颜色" class="headerlink" title="element-ui动态更改el-table某个单元格字体颜色"></a>element-ui动态更改el-table某个单元格字体颜色</h1><h5 id="一、处于某种原因，有时候一个表格里很多种样式，比如单元格动态改变字体颜色，这时候就要用到element官方的el-table的属性-cell-style-”cellStyle”属性了"><a href="#一、处于某种原因，有时候一个表格里很多种样式，比如单元格动态改变字体颜色，这时候就要用到element官方的el-table的属性-cell-style-”cellStyle”属性了" class="headerlink" title="一、处于某种原因，有时候一个表格里很多种样式，比如单元格动态改变字体颜色，这时候就要用到element官方的el-table的属性:cell-style=”cellStyle”属性了"></a>一、处于某种原因，有时候一个表格里很多种样式，比如单元格动态改变字体颜色，这时候就要用到element官方的el-table的属性:cell-style=”cellStyle”属性了</h5><p>html:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">通过:cell-style&#x3D;&quot;cellStyle&quot; 方法返回一个回调，具体参数看文档</span><br><span class="line">&lt;el-table</span><br><span class="line">	:data&#x3D;&quot;tableData&quot;</span><br><span class="line">	style&#x3D;&quot;width: 100%&quot;</span><br><span class="line">	:header-cell-style&#x3D;&quot;&#123;color: &#39;#848484&#39;, fontSize: &#39;14px&#39;&#125;&quot;</span><br><span class="line">	:cell-style&#x3D;&quot;cellStyle&quot;</span><br><span class="line">	:default-sort &#x3D; &quot;&#123;prop: &#39;date&#39;, order: &#39;descending&#39;&#125;&quot;</span><br><span class="line">	&gt;</span><br><span class="line">&lt;&#x2F;el-table&gt; </span><br></pre></td></tr></table></figure>
-<p>js:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 表体字体颜色设置</span><br><span class="line">&#x2F;***</span><br><span class="line"> * row为某一行的除操作外的全部数据</span><br><span class="line"> * column为某一列的属性</span><br><span class="line"> * rowIndex为某一行（从0开始数起）</span><br><span class="line"> * columnIndex为某一列（从0开始数起）</span><br><span class="line"> *&#x2F;</span><br><span class="line">cellStyle (&#123; row, column, rowIndex, columnIndex &#125;) &#123;</span><br><span class="line">  &#x2F;&#x2F; 状态列字体颜色</span><br><span class="line">  if (row.status &#x3D;&#x3D;&#x3D; &#39;已发布&#39; &amp;&amp; columnIndex &#x3D;&#x3D;&#x3D; 3) &#123;</span><br><span class="line">    return &#39;color: #0CB618&#39;</span><br><span class="line">  &#125; else if (row.status &#x3D;&#x3D;&#x3D; &#39;暂不发布&#39; &amp;&amp; columnIndex &#x3D;&#x3D;&#x3D; 3) &#123;</span><br><span class="line">    return &#39;color: #EA1B29&#39;</span><br><span class="line">  &#125; else &#123;</span><br><span class="line">    return &#39;color: #1a1a1b&#39;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, </span><br></pre></td></tr></table></figure>
-<p>这样就可以改变el-table某一列的颜色了</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/03/07/10-element-ui%E5%8A%A8%E6%80%81%E6%9B%B4%E6%94%B9el-table%E6%9F%90%E4%B8%AA%E5%8D%95%E5%85%83%E6%A0%BC%E5%AD%97%E4%BD%93%E9%A2%9C%E8%89%B2/">展开全文 >></a>
         </p>
       
 
